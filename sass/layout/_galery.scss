@@ -1,22 +1,28 @@
-/*-----------------------GALERY-----------------------*/
-.img{
-    &__logo{
-        @include border-w;
-        width: 200px;
-        margin: 10px; 
-    }
+@use "sass:map";
+@use "../config/colors" as *;
+@use "../config/mixin"  as *;
+@use "../config/mq"     as *;
 
-    &__gral{
-        @include border-w;
-        width: 15em;
-        
-        &-w{
-            @include border-w;
-            width: 2em;
-            margin-top: 6em;
-            margin-right: 2em;
-            align-items: center;
-        }
-    }
-    
+/*-----------------------GALERY-----------------------*/
+
+.img__logo {
+  border: 3px solid $white;
+  border-radius: 15px;
+  width: 200px;
+  margin: 10px;
+}
+
+.img__gral {
+  border: 3px solid $white;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.img__gral-w {
+  border: 3px solid $white;
+  border-radius: 15px;
+  width: 100%;
+  margin-top: 0;
+  margin-right: 0;
 }

@@ -1,0 +1,127 @@
+@use "../config/colors" as *; // usa tus vars $brand, $accent, etc.
+@use "sass:color";
+
+/* Tema claro (lo tenés en :root de _colors.scss) — lo dejamos tal cual */
+
+/*------------------------------------
+  TEMA OSCURO — override con CSS vars
+  Nota: mantenemos el branding pero ajustamos contraste y luminancia
+------------------------------------*/
+:root[data-theme="dark"] {
+  /* paleta base dark */
+  --c-bg:         #0f1415;                              /* fondo general */
+  --c-surface:    #161c1d;                              /* tarjetas/navbar */
+  --c-text:       #e7ecef;                              /* texto principal */
+  --c-text-invert:#0e1111;                              /* texto sobre fondos claros */
+
+  /* nuevo: alpha ya precalculada para evitar usar color.change con var() */
+  --c-accent-alpha: rgba(34, 197, 94, 0.22);
+
+  /* ajustes de colores derivados usando Sass (estos sí son valores fijos) */
+  --c-muted:      #{color.adjust($muted, $lightness: -25%, $saturation: -10%)};
+  --c-brand:      #{color.adjust($brand, $lightness: 8%)};  
+  --c-brand-2:    #{color.adjust($brand-2, $lightness: 10%)};
+  --c-accent:     #F59E0B;                              /* acento accesible en dark*/
+  --c-warning:    #{color.adjust($warning, $lightness: 5%)};
+}
+
+/*------------------------------------
+  COMPONENTES EN DARK MODE
+------------------------------------*/
+[data-theme="dark"] {
+  body { background: var(--c-bg); color: var(--c-text); }
+
+  /* Navbar */
+  .navbar.bg-body-tertiary {
+    background-color: var(--c-surface) !important;
+    border-bottom: 1px solid var(--c-muted);
+  }
+
+  /* Tarjetas */
+  .card {
+    background-color: var(--c-surface);
+    border-color: var(--c-muted);
+    box-shadow: 0 8px 22px rgba(0,0,0,.35);
+  }
+
+  /* Botón acordeón */
+  .accordion-button {
+    background-color: var(--c-surface);
+    color: var(--c-text);
+    &:not(.collapsed) {
+      background-color: color.adjust($brand, $alpha:.12); /* usamos $brand fijo */
+      color: var(--c-text);
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,.03);
+    }
+    &::after { filter: invert(0.85); }
+  }
+
+  /* Listas */
+  .list-group-item {
+    background-color: var(--c-surface);
+    border-color: var(--c-muted);
+  }
+
+  /* Badge */
+  .badge.text-bg-primary {
+    background-color: var(--c-brand) !important;
+    color: var(--c-text-invert) !important;
+  }
+
+  /* Botones */
+  .btn-primary {
+    background-color: var(--c-brand);
+    border-color: var(--c-brand);
+    &:hover { background-color: color.adjust($brand, $lightness: -6%); }
+    &:active { background-color: color.adjust($brand, $lightness: -10%); }
+  }
+  .btn-outline-primary {
+    color: var(--c-brand);
+    border-color: var(--c-brand);
+    &:hover { background-color: var(--c-brand); color: var(--c-text-invert); }
+    &:active { background-color: color.adjust($brand, $lightness: -10%); }
+  }
+
+  /* Formularios */
+  .form-control, .form-select, textarea.form-control {
+    background: #101516;
+    color: var(--c-text);
+    border-color: var(--c-muted);
+  }
+  .form-control:focus, .form-select:focus, textarea.form-control:focus {
+    border-color: var(--c-accent);
+    /* usamos la variable precalculada para alpha */
+    box-shadow: 0 0 0 .2rem var(--c-accent-alpha);
+  }
+}
+
+/*------------------------------------
+  THEME CONFIG BASE (modo claro por defecto)
+------------------------------------*/
+:root {
+  /* Variables de color base */
+  --c-accent: #F59E0B;
+  --c-accent-alpha: rgba(34, 197, 94, 0.22); /* alpha precalculado */
+
+  --c-bg: #ffffff;
+  --c-text: #1f2937;
+}
+
+[data-theme="dark"] {
+  --c-accent: #4ade80;
+  --c-accent-alpha: rgba(74, 222, 128, 0.22); /* equivalente en dark mode */
+
+  --c-bg: #1f2937;
+  --c-text: #f9fafb;
+}
+
+/*------------------------------------
+  FOCUS STYLES (común a todos los temas)
+------------------------------------*/
+.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus {
+  border-color: var(--c-accent);
+  /* ya no usamos color.change para evitar error con var() */
+  box-shadow: 0 0 0 .2rem var(--c-accent-alpha);
+}

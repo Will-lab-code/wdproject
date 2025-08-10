@@ -1,9 +1,14 @@
-// margin, padding
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: $title-prin;
-    font-size: 1em;
+/* --- Reset minimalista y accesible --- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  /* No uses variables aquí si _tipo.scss no se importa antes */
+  background: var(--c-bg);
+  color: var(--c-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+img, video { max-width: 100%; height: auto; display: block; }
+button, input, textarea, select { font: inherit; }

@@ -1,0 +1,110 @@
+@use "../config/colors" as *;
+@use "../config/mixin"  as *;
+@use "../config/mq"     as *;
+
+/* ===== Hero estilo “business card” ===== */
+.hero--card {
+  position: relative;
+  border-radius: 18px;
+  background-color: var(--c-surface);         /* lado claro */
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+
+  /* panel oscuro con corte diagonal a la izquierda */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 55% 0 0;                          /* ancho del panel oscuro */
+    background: var(--c-brand-2);              /* gunmetal */
+    transform: skewX(-12deg);
+    transform-origin: left top;
+  }
+
+  .wd-container { position: relative; }        /* elevar contenido por encima del ::before */
+}
+
+/* patrón de puntos sutil del fondo */
+.dot-bg {
+  background-image:
+    radial-gradient(rgba(0,0,0,.06) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* claim en cinta caribbean (como el bloque “Digitalizá tu negocio”) */
+.badge-claim {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: .9rem 1.25rem;
+  background: var(--c-brand);                  /* caribbean #336261 */
+  color: var(--c-text-invert);
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+}
+
+/* título y textos dentro del panel oscuro: blanco */
+.hero--card .hero__title,
+.hero--card .hero__title + p {
+  color: var(--c-text-invert);
+}
+
+/* tarjeta de contacto del lado derecho */
+.contact-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-muted);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+}
+
+/* lista de contactos con icono redondo */
+.contact-list {
+  display: grid;
+  gap: .75rem;
+}
+.contact-item {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  align-items: center;
+  gap: .75rem;
+}
+.contact-item__icon {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--c-brand-2);
+  color: var(--c-text-invert);
+  box-shadow: 0 6px 14px rgba(0,0,0,.15);
+}
+
+/* botón/CTA destacado */
+.btn-cta {
+  --bs-btn-bg: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+  --bs-btn-color: var(--c-text-invert);
+  --bs-btn-hover-bg: var(--c-brand);
+  --bs-btn-hover-border-color: var(--c-brand);
+  --bs-btn-hover-color: var(--c-text-invert);
+  border-radius: 999px;
+  padding-inline: 1.1rem;
+}
+
+/* cards y bloques “quote” más limpios */
+.card {
+  border: 1px solid var(--c-muted);
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+.card-header { background: var(--c-surface); }
+
+/* imágenes redondeadas finas como en la tarjeta */
+.hero--card img { border-radius: 10px; }
+
+/* spacing responsive */
+@include up(md) {
+  .hero--card::before { inset: 0 58% 0 0; }
+}
+@include up(lg) {
+  .hero--card::before { inset: 0 60% 0 0; }
+}

@@ -1,30 +1,21 @@
-//Todos mis estilos estarán enlazados aqui
+/* ---- Config (no imprimen CSS salvo reset/tipo) */
+@use "config/colors";
+@use "config/mixin";
+@use "config/mq";
+@use "config/reset";
+@use "config/tipo";
+@use "config/theme";
 
-/* 
+/* ---- Layout (estos sí generan CSS de la UI) */
+@use "layout/menu";
+@use "layout/main";
+@use "layout/hero";
+@use "layout/aside";
+@use "layout/home";
+@use "layout/contact";
+@use "layout/newsletter";
+@use "layout/galery";
+@use "layout/footer";
 
-✨ Reset - margin, paddin, tipografías,
-colores
-tamaños de tipografías
-
-👉 Cabeza - header
-👉 cuerpo - main
-👉 pie - footer
-
-
-*/
-//config
-@import './config/mixin';
-@import './config/colors';
-@import './config/tipo';
-@import './config/reset';
-
-
-//layout
-@import './layout/menu';
-@import './layout/main';
-@import './layout/aside';
-@import './layout/galery';
-@import './layout/footer';
-
-//media queries
-@import './layout/mq';
+/* ---- Components */
+@use "components/buttons";

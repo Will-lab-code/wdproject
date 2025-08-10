@@ -1,24 +1,38 @@
-// con parámetros (puedo definir que cambiar)
-@mixin wh($width, $height){
-    width: $width;
-    height:$height;
+@use "colors" as *;
+
+/* Helpers básicos */
+@mixin wh($w, $h) { width: $w; height: $h; }
+@mixin mp($m, $p) { margin: $m; padding: $p; }
+
+@mixin flex($dir: row, $jc: flex-start, $ai: stretch, $gap: 0) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $jc;
+  align-items: $ai;
+  gap: $gap;
 }
 
-@mixin mp($margin, $padding){
-    margin: $margin;
-    padding: $padding;
+/* Contenedor centrado */
+@mixin container($max: 1200px, $px: 1rem) {
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: $px;
 }
 
-// sin parámetros (este va a ser un bloque de código que podré reutilizar
-
-@mixin flex-jc-fd-ai{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
+/* Tipografía fluida */
+@mixin fluid-type($min, $max) {
+  font-size: clamp($min, 2vw + ($min / 2), $max);
 }
 
-@mixin border-w{
-    border: 3px solid $white;
-    border-radius: 15px;
+/* Borde estándar sin depender de $white */
+@mixin border-w($c: null) {
+  /* usa el color pasado; si no, usa la CSS var o el currentColor */
+  $fallback-color: currentColor;
+  border: 3px solid if($c != null, $c, var(--c-text-invert, #{$fallback-color}));
+  border-radius: 15px;
+}
+
+/* Compat mixin antiguo */
+@mixin flex-jc-fd-ai {
+  @include flex(column, space-around, center);
 }

@@ -1,40 +1,139 @@
-/*-----------------------MENU-----------------------*/
+@use "sass:map";
+@use "sass:color";
+@use "../config/colors" as *;
+@use "../config/mixin"  as *;
+@use "../config/mq"     as *;
 
+/*-----------------------MENU (Navbar + helpers)-----------------------*/
 
-.center-w{
-    text-align: center;
+/* Navbar base */
+.navbar {
+  background-color: var(--c-surface);
+  border-bottom: 1px solid var(--c-muted);
+  backdrop-filter: saturate(120%) blur(4px);
 }
 
-.col-btn-w{
-    background-color: $grey;
-    color: map-get($txt-parrafos , color );
-    @include border-w;    
+.navbar-brand {
+  color: var(--c-text);
+  font-weight: 700;
+
+  &:hover, &:focus { color: var(--c-brand); }
 }
 
-.w-col-btn-cont{
-    background-color: $grey;
-    color: map-get($txt-parrafos , color );
-    @include border-w;
-    @include flex-jc-fd-ai;    
+/* Links del menú */
+.nav-link {
+  color: var(--c-text);
+  opacity: .9;
+  transition: color .2s ease;
+
+  &:hover, &:focus { color: var(--c-brand); opacity: 1; }
+  &.active { color: var(--c-accent); font-weight: 600; }
 }
 
-a{
-    &:link{
-    color:$d-green;
-    }
-
-    &:visited{
-        color:$d-red;
-        text-decoration: underline;
-    }
-
-    &:hover{
-        background-color: $d-red;
-        color: $white;
-    }
-
-    &:active{
-        background-color: $green;
-        color: $white;
-    }
+/* Dropdown */
+.dropdown-menu {
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-muted);
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
 }
+.dropdown-item {
+  color: var(--c-text);
+
+  &:hover, &:focus {
+    background-color: var(--c-bg);
+    color: var(--c-brand);
+  }
+}
+
+/* Toggler (hamburger) */
+.navbar-toggler {
+  border-color: var(--c-muted);
+  &:focus { box-shadow: none; }
+}
+
+/* Botón de búsqueda (sin tocar HTML) */
+.navbar .btn-outline-success {
+  --bs-btn-color: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+  --bs-btn-hover-color: var(--c-text-invert);
+  --bs-btn-hover-bg: var(--c-accent);
+  --bs-btn-hover-border-color: var(--c-accent);
+}
+
+/*-----------------------Helpers previos (limpios)-----------------------*/
+
+.center-w { text-align: center; }
+
+/* Si tu mixin border-w acepta color, usamos el tema; si no, quitá el argumento */
+.col-btn-w {
+  background-color: var(--c-muted);
+  color: var(--c-text-invert);
+  @include border-w(var(--c-muted));
+}
+
+/* Contenedor de botones/acciones */
+.w-col-btn-cont {
+  background-color: var(--c-muted);
+  color: var(--c-text-invert);
+  @include border-w(var(--c-muted));
+  @include flex(column, center, center, 1rem);
+}
+
+/* Enlaces globales (fuera del navbar) */
+main a:not(.nav-link),
+footer a:not(.nav-link) {
+  color: var(--c-accent);
+  text-decoration: none;
+
+  &:visited { color: var(--c-warning); text-decoration: underline; }
+  &:hover, &:focus { color: var(--c-brand); text-decoration: underline; }
+  &:active { color: var(--c-text-invert); background-color: var(--c-accent); }
+}
+
+/* Responsive tweaks si los necesitás */
+@include up(lg) {
+  .navbar { border-radius: 12px; }
+}
+
+/* Nav links con hover tipo botón (sin tocar HTML) */
+/* Píldora + tres estados */
+.navbar .nav-link {
+  position: relative;
+  border-radius: 999px;
+  padding: .375rem .75rem;
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
+  color: var(--c-text);
+}
+
+/* 1) Hover */
+nav.navbar .navbar-nav .nav-link:hover,
+nav.navbar .navbar-nav .nav-link:focus {
+  background-color: color.adjust($accent, $lightness: -6%);
+  color: $text-invert; /* ahora texto blanco */
+  text-decoration: none;
+}
+
+/* 2) Active (mousedown) */
+.navbar .nav-link:active {
+  background-color: color.adjust($accent, $lightness: -12%);
+  color: $text-invert;
+}
+
+/* 3) Visitado → solo cambia el color del texto */
+.navbar .nav-link:visited {
+  color: color.adjust($accent, $lightness: -8%);
+}
+
+/* Estado active de la página actual como pastilla de marca */
+.navbar .nav-link.active[aria-current="page"] {
+  background-color: var(--c-brand);
+  color: $text-invert;
+  font-weight: 600;
+}
+
+/* Accesibilidad */
+.navbar .nav-link:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+} 
+

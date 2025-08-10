@@ -1,0 +1,108 @@
+@use "sass:color";
+@use "../config/colors" as *;
+@use "../config/mixin"  as *;
+@use "../config/mq"     as *;
+@use "../config/tipo"   as *;
+
+/* ===== Contacto: suavizado de formulario ===== */
+
+/* Card/form general */
+form.card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-muted);
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+
+/* Etiquetas y textos auxiliares */
+.form-label {
+  font-weight: 600;
+  color: var(--c-text);
+}
+.form-text {
+  color: color.adjust($muted, $lightness: -20%);
+}
+
+/* Controles */
+.form-control,
+.form-select,
+textarea.form-control {
+  background: var(--c-surface);
+  color: var(--c-text);
+  border: 1px solid var(--c-muted);
+  border-radius: 12px;
+  padding: .65rem .9rem;
+  transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+/* Placeholder más tenue */
+.form-control::placeholder,
+textarea.form-control::placeholder {
+  color: color.adjust($muted, $lightness: -15%);
+}
+
+/* Hover sutil (sin distracción) */
+.form-control:hover,
+.form-select:hover,
+textarea.form-control:hover {
+  border-color: color.adjust($muted, $lightness: -10%);
+}
+
+/* Focus con tu acento (ring suave) */
+.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus {
+  border-color: $accent;
+  box-shadow: 0 0 0 .2rem color.change($accent, $alpha: .18);
+  outline: 0;
+}
+
+/* Estados de validación (Bootstrap) */
+.was-validated .form-control:invalid,
+.form-control.is-invalid,
+.was-validated .form-select:invalid,
+.form-select.is-invalid,
+.was-validated textarea.form-control:invalid,
+textarea.form-control.is-invalid {
+  border-color: #ef4444; /* rojo accesible */
+  box-shadow: 0 0 0 .18rem color.change(#ef4444, $alpha: .16);
+}
+
+.was-validated .form-control:valid,
+.form-control.is-valid,
+.was-validated .form-select:valid,
+.form-select.is-valid,
+.was-validated textarea.form-control:valid,
+textarea.form-control.is-valid {
+  border-color: $brand;
+  box-shadow: 0 0 0 .18rem color.change($brand, $alpha: .16);
+}
+
+/* Botón enviar (ya tenés .btn-primary tematizado) */
+.btn-cta {
+  border-radius: 999px;
+  padding-inline: 1.2rem;
+  min-width: 160px;
+}
+
+/* Espaciado interno uniforme */
+form.card .row.g-3 { row-gap: 1rem; }
+
+/* Responsive */
+@include up(md) {
+  form.card { padding: 1.25rem 1.5rem; }
+}
+
+/* Ajustar altura base de select y textarea para alinear con inputs */
+.form-select {
+  height: calc(2.75rem + 2px); /* mismo alto que .form-control */
+  padding-top: .65rem;
+  padding-bottom: .65rem;
+}
+
+textarea.form-control {
+  min-height: calc(2.75rem + 2px); /* mismo alto mínimo */
+  padding-top: .65rem;
+  padding-bottom: .65rem;
+  resize: vertical; /* permitir redimensionar solo verticalmente */
+}

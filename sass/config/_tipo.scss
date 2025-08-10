@@ -1,19 +1,41 @@
-// Titulos, parrafos
-$title-prin: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-$title-sec:'Helvetica';
-$text-important: 'Baskerville';
-$text-general: 'Quicksand';
+@use "mixin" as *;   /* para usar fluid-type/container acá */
 
-//size
-$small: 3em;
-$medium: 5em;
-$large: 10em;
+/* Fuentes */
+$title-prin: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+$title-sec: "Helvetica", Arial, sans-serif;
+$text-important: "Baskerville", Georgia, serif;
+$text-general: "Quicksand", $title-prin;
 
-$txt-size:(
-    xs:0.6em,
-    s:1em,
-    m:1.5em,
-    l:2em,
+/* Tamaños base */
+$txt-size: (
+  xs: 0.75rem,
+  s:  0.875rem,
+  m:  1rem,
+  l:  1.25rem
 );
 
+/* Base */
+body { font-family: $title-prin; line-height: 1.6; }
 
+/* Titulares fluidos */
+h1 { @include fluid-type(1.5rem, 2.25rem); line-height: 1.2; }
+h2 { @include fluid-type(1.25rem, 1.75rem); line-height: 1.25; }
+h3 { @include fluid-type(1.125rem, 1.5rem); line-height: 1.3; }
+
+/* Utilidades de tamaño */
+@each $key, $val in $txt-size {
+  .text-#{$key} { font-size: $val; }
+}
+
+/* Utilidades globales */
+:root { --wd-maxw: 1200px; }
+.wd-container { @include container(var(--wd-maxw), 1rem); }
+.hero { background: var(--bs-body-bg); }
+.hero__title { font-weight: 700; }
+.img-fit { width: 100%; height: auto; display: block; }
+.img-cover { object-fit: cover; width: 100%; height: 100%; }
+.ratio-16x9 { aspect-ratio: 16/9; }
+.footer-brand { width: 56px; height: 56px; }
+.carousel-control-next-icon,
+.carousel-control-prev-icon { filter: drop-shadow(0 0 2px rgba(0,0,0,.7)); }
+p { line-height: 1.65; }

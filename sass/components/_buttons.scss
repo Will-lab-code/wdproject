@@ -1,0 +1,104 @@
+/* Sólido primary con tu acento */
+.btn-primary {
+  --bs-btn-bg: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+  --bs-btn-color: var(--c-text-invert);
+  --bs-btn-hover-bg: var(--c-brand);
+  --bs-btn-hover-border-color: var(--c-brand);
+  --bs-btn-hover-color: var(--c-text-invert);
+  --bs-btn-active-bg: var(--c-brand);
+  --bs-btn-active-border-color: var(--c-brand);
+}
+
+/* Outline primary con tu acento */
+.btn-outline-primary {
+  --bs-btn-color: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+  --bs-btn-hover-color: var(--c-text-invert);
+  --bs-btn-hover-bg: var(--c-accent);
+  --bs-btn-hover-border-color: var(--c-accent);
+  --bs-btn-active-color: var(--c-text-invert);
+  --bs-btn-active-bg: var(--c-accent);
+  --bs-btn-active-border-color: var(--c-accent);
+}
+
+/* Outline success mapeado al acento (por si aparece en otras vistas) */
+.btn-outline-success {
+  --bs-btn-color: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+  --bs-btn-hover-color: var(--c-text-invert);
+  --bs-btn-hover-bg: var(--c-accent);
+  --bs-btn-hover-border-color: var(--c-accent);
+  --bs-btn-active-color: var(--c-text-invert);
+  --bs-btn-active-bg: var(--c-accent);
+  --bs-btn-active-border-color: var(--c-accent);
+}
+
+/* Botón tipo “chip” para CTAs especiales */
+.btn-cta {
+  --bs-btn-bg: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+  --bs-btn-color: var(--c-text-invert);
+  --bs-btn-hover-bg: var(--c-brand);
+  --bs-btn-hover-border-color: var(--c-brand);
+  --bs-btn-hover-color: var(--c-text-invert);
+  border-radius: 999px;
+  padding-inline: 1.1rem;
+}
+
+/* === Botones: overrides definitivos === */
+
+/* Sólido primary con tu acento (global y dentro del navbar) */
+.btn-primary,
+.navbar .btn-primary {
+  --bs-btn-bg: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+  --bs-btn-color: var(--c-text-invert);
+
+  --bs-btn-hover-bg: var(--c-brand);
+  --bs-btn-hover-border-color: var(--c-brand);
+  --bs-btn-hover-color: var(--c-text-invert);
+
+  --bs-btn-active-bg: var(--c-brand);
+  --bs-btn-active-border-color: var(--c-brand);
+  --bs-btn-active-color: var(--c-text-invert);
+}
+
+/* Outline primary y success (por si en alguna vista quedó success) */
+.btn-outline-primary,
+.navbar .btn-outline-primary,
+.btn-outline-success,
+.navbar .btn-outline-success {
+  --bs-btn-color: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+
+  --bs-btn-hover-bg: var(--c-accent);
+  --bs-btn-hover-border-color: var(--c-accent);
+  --bs-btn-hover-color: var(--c-text-invert);
+
+  --bs-btn-active-bg: var(--c-accent);
+  --bs-btn-active-border-color: var(--c-accent);
+  --bs-btn-active-color: var(--c-text-invert);
+}
+
+/* Fallback explícito por si algún tema de cascade molesta */
+.btn-primary:hover,
+.navbar .btn-primary:hover {
+  background-color: var(--c-brand) !important;
+  border-color: var(--c-brand) !important;
+  color: var(--c-text-invert) !important;
+}
+.btn-outline-primary:hover,
+.navbar .btn-outline-primary:hover,
+.btn-outline-success:hover,
+.navbar .btn-outline-success:hover {
+  background-color: var(--c-accent) !important;
+  border-color: var(--c-accent) !important;
+  color: var(--c-text-invert) !important;
+}
+
+/* Accesibilidad: focus visible */
+.btn:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}

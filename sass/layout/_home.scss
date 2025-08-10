@@ -1,0 +1,35 @@
+@use "sass:color";
+@use "../config/colors" as *;
+@use "../config/mixin"  as *;
+@use "../config/mq"     as *;
+@use "../config/tipo"   as *;
+
+/* ===== Home (scoped) ===== */
+.home-page {
+  /* HERO */
+  .hero {
+    background: linear-gradient(
+      135deg,
+      color.adjust($brand, $lightness: -8%) 0%,
+      color.adjust($brand, $lightness: 6%) 100%
+    );
+    color: $text-invert;
+
+    .hero__title { @include fluid-type(1.75rem, 2.5rem); font-weight: 700; }
+    .hero__lead  { font-size: 1.05rem; opacity: .95; }
+    .btn-cta     { border-radius: 999px; min-width: 160px; }
+    .hero__media { box-shadow: 0 12px 28px rgba(0,0,0,.18); }
+  }
+
+  /* Cards */
+  .card {
+    border: 1px solid var(--c-muted);
+    border-radius: 12px;
+    box-shadow: 0 8px 22px rgba(0,0,0,.06);
+  }
+
+  /* Acordeón (testimonios) */
+  .accordion-button {
+    &:focus { box-shadow: none; }
+  }
+}

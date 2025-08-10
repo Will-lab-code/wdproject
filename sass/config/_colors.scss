@@ -1,51 +1,165 @@
-//colores
-$white: antiquewhite;
-$black: #131316;
-$grey: #48586f;
-$d-green:#314c53;
-$med-green: #475841;
-$yellow-green:yellowgreen;
-$green: green;
-$red: red;
-$d-red: darkred;
+/* === Paleta base (sobria + tech) === */
+$gunmetal:   #313B3B; // base oscura
+$jet:        #292B2B; // base oscura 2
+$timberwolf: #D3D3D3; // neutro claro
+$caribbean:  #336261; // verde-azulado elegante
+$dimgray:    #5B6666; // gris complemento
+$white:      #FFFFFF;
 
-//Mapas
+/* Acento (acción/CTA) */
+$accent-amber: #F59E0B;
 
-$txt-parrafos:(
-    color: $white,
-    txt-align: justify,
-    font-size: 3em,
-    padding: 1.5em,
+/* === Semánticos (única fuente de verdad) === */
+$brand:        $caribbean;     // primario
+$brand-2:      $gunmetal;      // secundario / headers oscuros
+$accent:       $accent-amber;  // CTA
+$warning:      $accent-amber;
+$text:         $jet;           // texto en fondos claros
+$text-invert:  $white;         // texto en fondos oscuros
+$bg:           $timberwolf;    // fondo claro
+$surface:      $white;         // cards / navbar clara
+$muted:        #C5CED0;        // bordes/muted
+
+/* === Variables CSS (para usar en todo el UI) === */
+:root {
+  --c-brand: #{$brand};
+  --c-brand-2: #{$brand-2};
+  --c-accent: #{$accent};
+  --c-warning: #{$warning};
+  --c-text: #{$text};
+  --c-text-invert: #{$text-invert};
+  --c-bg: #{$bg};
+  --c-surface: #{$surface};
+  --c-muted: #{$muted};
+}
+
+/* === Compat mínima con layouts viejos === */
+$black: $text !default;
+$grey:  $muted !default;
+$d-green: $brand !default;
+$med-green: $brand-2 !default;
+$yellow-green: $accent !default;
+$green: $accent !default;
+$red: $warning !default;
+$d-red: $warning !default;
+$d-brand: $brand !default;
+
+/* Maps legacy usados en tu SCSS actual */
+$color-bg: (
+  white: $surface,
+  black: $text,
+  grey:  $muted,
+  d-green: $brand,
+  med-green: $brand-2,
+  yellow-green: $accent,
+  green: $accent,
+  red: $warning,
+  d-red: $warning
 );
-// map-get($txt-parrafos, fontsz) = 3em
 
-$size:(
-    xs: 0.5em,
-    sm: 1em,
-    md: 1.5em,
-    lg: 2em,
+$txt-parrafos: (
+  color: $text-invert,
+  txt-align: justify,
+  font-size: 1rem,
+  padding: 1rem
 );
 
-$color-bg:(
-    white: $white,
-    black: $black,
-    grey: $grey,
-    d-green:$d-green,
-    med-green: $med-green,
-    yellow-green:$yellow-green,
-    green: $green,
-    red: $red,
-    d-red: $d-red,
-);
+/* === Bridge: mapeo de tu tema a Bootstrap === */
+:root {
+  /* Core */
+  --bs-body-bg: var(--c-bg);
+  --bs-body-color: var(--c-text);
+  --bs-border-color: var(--c-muted);
 
+  /* Brand */
+  --bs-primary: var(--c-accent);      /* botones primarios, links “primary” */
+  --bs-secondary: var(--c-brand-2);
+  --bs-link-color: var(--c-accent);
+  --bs-link-hover-color: var(--c-brand);
 
-// ☝       ☝
-//key       valor
-//llave     bp
+  /* Superficies */
+  --bs-card-bg: var(--c-surface);
+  --bs-navbar-bg: var(--c-surface);
+  --bs-tertiary-bg: var(--c-surface);
+}
 
-@each $llave, $bp in $size{
-    .comi-#{$llave}
-    {
-        font-size: $bp;
-    }
+/* === Ajuste de botones outline para que usen tu acento === */
+.btn-outline-primary {
+  --bs-btn-color: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+  --bs-btn-hover-color: var(--c-text-invert);
+  --bs-btn-hover-bg: var(--c-accent);
+  --bs-btn-hover-border-color: var(--c-accent);
+  --bs-btn-active-color: var(--c-text-invert);
+  --bs-btn-active-bg: var(--c-accent);
+  --bs-btn-active-border-color: var(--c-accent);
+}
+
+/* === Mapear esquema Bootstrap a tu tema === */
+:root {
+  /* Primary = tu acento */
+  --bs-primary: var(--c-accent);
+  --bs-primary-rgb: 245, 158, 11; /* #F59E0B aprox */
+
+  /* Success = también tu acento (para btn-outline-success existentes) */
+  --bs-success: var(--c-accent);
+  --bs-success-rgb: 245, 158, 11;
+}
+
+/* Botón sólido primary con tu acento */
+.btn-primary {
+  --bs-btn-bg: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+  --bs-btn-color: var(--c-text-invert);
+  --bs-btn-hover-bg: var(--c-brand);
+  --bs-btn-hover-border-color: var(--c-brand);
+  --bs-btn-hover-color: var(--c-text-invert);
+  --bs-btn-active-bg: var(--c-brand);
+  --bs-btn-active-border-color: var(--c-brand);
+}
+
+/* Botón outline primary con tu acento */
+.btn-outline-primary {
+  --bs-btn-color: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+  --bs-btn-hover-color: var(--c-text-invert);
+  --bs-btn-hover-bg: var(--c-accent);
+  --bs-btn-hover-border-color: var(--c-accent);
+  --bs-btn-active-color: var(--c-text-invert);
+  --bs-btn-active-bg: var(--c-accent);
+  --bs-btn-active-border-color: var(--c-accent);
+}
+
+/* Botón outline success (para no cambiar HTML que ya usa “success”) */
+.btn-outline-success {
+  --bs-btn-color: var(--c-accent);
+  --bs-btn-border-color: var(--c-accent);
+  --bs-btn-hover-color: var(--c-text-invert);
+  --bs-btn-hover-bg: var(--c-accent);
+  --bs-btn-hover-border-color: var(--c-accent);
+  --bs-btn-active-color: var(--c-text-invert);
+  --bs-btn-active-bg: var(--c-accent);
+  --bs-btn-active-border-color: var(--c-accent);
+}
+
+:root {
+  /* Core */
+  --bs-body-bg: var(--c-bg);
+  --bs-body-color: var(--c-text);
+  --bs-border-color: var(--c-muted);
+
+  /* Brand */
+  --bs-primary: var(--c-accent);
+  --bs-primary-rgb: 245, 158, 11; /* #F59E0B */
+  --bs-success: var(--c-accent);  /* para .btn-outline-success existentes */
+  --bs-success-rgb: 245, 158, 11;
+
+  /* Links */
+  --bs-link-color: var(--c-accent);
+  --bs-link-hover-color: var(--c-brand);
+
+  /* Superficies */
+  --bs-card-bg: var(--c-surface);
+  --bs-navbar-bg: var(--c-surface);
+  --bs-tertiary-bg: var(--c-surface);
 }

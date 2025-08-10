@@ -1,35 +1,90 @@
+@use "sass:map";
+@use "../config/colors" as *;
+@use "../config/mixin"  as *;
+@use "../config/mq"     as *;
+@use "../config/tipo"   as *;  /* $txt-size */
+
 /*-----------------------ASIDE-----------------------*/
-.comentarios{
-    @include mp (10px, 10px);
-    @include border-w;
-    height: 3em;
-    display: flex;
-    flex-direction: column;
-    
-    &__h3{
-        font-size: map-get($txt-size, xs);
-        color: $d-green;
-    }
 
-    div{
-        @include flex-jc-fd-ai;
-        height: 30em;
-    }
+/* Bloque “comentarios” con look de tarjeta */
+.comentarios {
+  @include mp(10px, 10px);
+  @include border-w(var(--c-muted));
+  background: var(--c-surface);
+  color: var(--c-text);
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 1rem;
+  min-height: 6rem;
+  border-radius: 16px;
 
-    p{
-        @include mp (10px, 10px);
-        color:$white;
-    }
+  &__h3 {
+    font-size: map.get($txt-size, s);
+    color: var(--c-brand);
+    margin: 0;
+  }
+
+  div {
+    @include flex(column, center, center, .5rem);
+    min-height: 12rem;
+  }
+
+  p {
+    @include mp(10px, 10px);
+    color: var(--c-text);
+  }
 }
 
-.publi-w{
-    text-align: center;
-    display: flex;
+/* Wrapper lateral (carrusel / acordeón) */
+.publi-w {
+  text-align: center;
+  @include flex(column, center, center, 1rem);
+  margin: 10px;
+  padding: 10px;
 }
 
-.col{
-    &-btn-w{
-        background-color: $grey;
-        color: $white;    
-    }
+/* Botón auxiliar */
+.col-btn-w {
+  background-color: var(--c-muted);
+  color: var(--c-text-invert);
+  @include border-w(var(--c-muted));
+}
+
+/* Carousel: bordes y sombra suaves */
+.carousel .carousel-inner {
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+  overflow: hidden;
+}
+
+/* Accordion con paleta propia */
+.accordion-item {
+  background: var(--c-surface);
+  border: 1px solid var(--c-muted);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.accordion-button {
+  background: var(--c-surface);
+  color: var(--c-text);
+
+  &:not(.collapsed) {
+    color: var(--c-brand);
+    background: var(--c-bg);
+    box-shadow: none;
+  }
+
+  &:focus { box-shadow: none; }
+}
+
+.accordion-body {
+  background: var(--c-surface);
+  color: var(--c-text);
+}
+
+/* Responsive */
+@include up(md) {
+  .publi-w { flex-direction: row; align-items: center; }
 }

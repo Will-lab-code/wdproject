@@ -16,5 +16,9 @@
     "url": "https://github.com/Will-lab-code/3ra-entrega-will-descarrega/issues"
   },
   "homepage": "https://github.com/Will-lab-code/3ra-entrega-will-descarrega#readme",
-  "description": "[![Website]()]  \r (https://will-lab-code.github.io/3ra-entrega-will-descarrega/index.html)"
+  "description": "[![Website]()]  \r (https://will-lab-code.github.io/3ra-entrega-will-descarrega/index.html)",
+  "dependencies": {
+    "axios": "^1.8.2",
+    "moment": "^2.30.1"
+  }
 }

@@ -1,32 +1,36 @@
+@use "sass:map";
+@use "../config/colors" as *;
+@use "../config/mixin"  as *;
+@use "../config/mq"     as *;
+
 /*-----------------------FOOTER-----------------------*/
 
-.pie{
-    @include flex-jc-fd-ai;
-    @include mp (10px, 10px);
+.pie {
+  @include flex(column, center, center, 1rem);
+  margin: 10px;
+  padding: 10px;
 
-    nav{
-        align-items: center;
-        
-        ul{
-            display: flex;
-            list-style: none;
-            justify-content: space-between;
-            gap: 33%;
+  nav {
+    align-items: center;
 
-            li{
-                justify-content: space-between; 
+    ul {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
 
-                a{
-                    color: $black;
-                    text-transform: lowercase;
-                    letter-spacing: 0.5px;
-                    text-decoration: none;
-                }
-            }
-        }
+      li a {
+        color: $black;
+        text-transform: lowercase;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+      }
     }
+  }
 
-    p{
-        @include mp (10px, 10px);
-    }
+  p {
+    margin: 10px;
+    padding: 10px;
+  }
 }

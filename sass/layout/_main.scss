@@ -1,117 +1,148 @@
+@use "sass:map";
+@use "../config/colors" as *;
+@use "../config/mixin"  as *;
+@use "../config/mq"     as *;
+@use "../config/tipo"   as *;
+
 /*-----------------------MAIN-----------------------*/
 
-h1{
-    color: $d-green;
-    font-size: map-get($txt-size, l );
+h1 {
+  color: var(--c-brand);
+  @include fluid-type(1.5rem, 2.25rem);
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.padre {
+  @include flex(column, space-around, center, 1rem);
+
+  &__h2 {
+    color: var(--c-text-invert);            /* texto claro sobre fondos oscuros */
+    font-size: map.get($txt-size, l);
     text-align: center;
-    padding-top: 20px;
+    margin-top: 20px;
     margin-bottom: 20px;
-}
 
-.padre{
-    @include flex-jc-fd-ai;
-
-    &__h2{
-        color: $white;
-        font-size: map-get($txt-size, m );
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-
-        &__top{
-            font-size: map-get($txt-size, m );
-            color: $d-green;
-            text-align: center;
-        }
+    &__top {
+      font-size: map.get($txt-size, m);
+      color: var(--c-brand);
+      text-align: center;
     }
+  }
 
-    form{
-        @include mp (10px, 10px);
-        display: flex;
-        flex-direction: column;
-        
-        label{
-            display: flex;
-            text-transform: uppercase;            
-        }
-    } 
+  form {
+    @include mp(10px, 10px);
+    display: flex;
+    flex-direction: column;
 
-    &__hijo{
-        @include mp (1em, 1em);
-        display: flex;
-        flex-flow: wrap;
-        
-
-        &__caja{
-            
-            @include flex-jc-fd-ai;
-            
-            @include border-w;
-            background-color: map-get($color-bg ,grey );
-            color: map-get($txt-parrafos , color );
-            text-align: map-get($txt-parrafos , txt-align );
-            
-            h3{
-                font-size: map-get($txt-size, s );
-            }
-        
-        }
-
+    label {
+      display: flex;
+      text-transform: uppercase;
     }
-}
+  }
 
-.caja{
-    @include wh (10em, 15em);
-    @include flex-jc-fd-ai;
-    @include border-w;
-    @include mp (10px, 10px);
-    background-color: map-get($color-bg , grey );
-    color: map-get($txt-parrafos , color );
-    text-align: map-get($txt-parrafos , txt-align );
-    
-    h3{
-        font-size: map-get($txt-size, s );
+  &__hijo {
+    @include mp(1em, 1em);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    &__caja {
+      @include flex(column, center, center, .75rem);
+      @include border-w(var(--c-muted));    /* borde acorde al tema */
+      background-color: var(--c-surface);   /* tarjeta clara */
+      color: var(--c-text);                 /* texto oscuro = mejor contraste */
+      text-align: justify;
+      padding: 1rem;
+
+      h3 { font-size: map.get($txt-size, s); }
     }
+  }
+}
 
-    &__nws{
-        @include flex-jc-fd-ai;
-        @include mp (10px, 10px);
-        @include border-w;
-        color: $white;
-        background-color: $grey;
+.caja {
+  width: auto;
+  height: auto;
+  min-height: 12rem;
+  @include flex(column, center, center, .75rem);
+  @include border-w(var(--c-muted));
+  @include mp(10px, 10px);
+  background-color: var(--c-surface);
+  color: var(--c-text);
+  text-align: justify;
+  padding: 1rem;
 
-        &__h3{
-            font-size: map-get($txt-size, m);
-            @include mp (5px, 5px);
-            text-decoration: underline;
-            color: $d-red;
-        }
-        
-        
+  h3 { font-size: map.get($txt-size, s); }
+
+  &__nws {
+    @include flex(column, center, center, .5rem);
+    @include mp(10px, 10px);
+    @include border-w(var(--c-muted));
+    color: var(--c-text-invert);
+    background-color: var(--c-brand-2);     /* bloque destacado oscuro */
+    padding: .75rem;
+
+    &__h3 {
+      font-size: map.get($txt-size, m);
+      @include mp(5px, 5px);
+      text-decoration: underline;
+      color: var(--c-warning);              /* acento ámbar para titulares */
     }
+  }
 }
 
-h3{
-    font-size: map-get($txt-size, m);
-    @include mp (5px, 5px);
-    text-decoration: underline;
-    color: $d-red;
+h3 {
+  font-size: map.get($txt-size, m);
+  @include mp(5px, 5px);
+  text-decoration: underline;
+  color: var(--c-warning);
 }
 
-.contenedor{
-    background-color: $d-green;
-    border-radius: 15px;
-    @include flex-jc-fd-ai;
-}
-.form{
-    font-style: italic;
-}
-
-.center-w{
-    text-align: center;
+.contenedor {
+  background-color: var(--c-brand);
+  border-radius: 15px;
+  @include flex(column, center, center, 1rem);
+  padding: 1rem;
+  color: var(--c-text-invert);
 }
 
-.subs{
-    @include flex-jc-fd-ai;
-    @include mp (10px, 10px);
+.form { font-style: italic; }
+.center-w { text-align: center; }
+
+.subs {
+  @include flex(column, center, center, .75rem);
+  @include mp(10px, 10px);
+}
+
+/* Responsive */
+@include up(md) {
+  .padre { @include flex(row, space-between, flex-start, 1.5rem); }
+  .padre__hijo { grid-template-columns: repeat(2, 1fr); }
+}
+@include up(lg) {
+  .padre__hijo { grid-template-columns: repeat(3, 1fr); }
+}
+
+/*---------------- HERO ----------------*/
+.hero {
+  background-color: var(--c-brand-2); /* fondo oscuro sobrio */
+  color: var(--c-text-invert);
+  padding: 3rem 0;
+
+  .hero__title {
+    color: var(--c-accent); /* título con acento */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  p {
+    color: var(--c-text-invert);
+  }
+
+  img {
+    border-radius: 0.5rem;
+    border: 3px solid var(--c-accent);
+  }
 }

@@ -1,0 +1,25 @@
+/* -------------------- MQ (Media Queries) -------------------- */
+@use "sass:map";
+
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+@function bp($key) {
+  @return map.get($breakpoints, $key);
+}
+
+@mixin up($key)   { @media (min-width: bp($key)) { @content; } }
+@mixin down($key) { @media (max-width: bp($key)) { @content; } }
+@mixin between($from, $to) {
+  @media (min-width: bp($from)) and (max-width: calc(bp($to) - 0.02px)) { @content; }
+}
+
+@mixin retina        { @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { @content; } }
+@mixin motion-safe   { @media (prefers-reduced-motion: no-preference) { @content; } }
+@mixin motion-reduce { @media (prefers-reduced-motion: reduce)         { @content; } }
