@@ -4,16 +4,20 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Guío a emprendedores a transformar sus ideas en negocios rentables y sostenibles." />
+  <meta name="description" content="Soy William Descarrega, ingeniero industrial. Ayudo a equipos, pymes y emprendedores a digitalizar procesos, automatizar tareas y tomar decisiones con datos reales.">
   <link rel="icon" href="./assets/logo.png" type="image/png" />
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
   <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
   <!-- CSS -->
   <link rel="stylesheet" href="./css/main.css" />
+
   <title>Inicio | William Descarrega</title>
+
   <script>
     (function () {
       try {
@@ -26,22 +30,45 @@
     })();
   </script>
 </head>
+
 <body>
+
   <!-- NAVBAR -->
   <header class="sticky-top shadow-sm">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" aria-label="Navegación principal">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container wd-container">
-        <a class="navbar-brand fw-semibold" href="./index.html">Will•Descarrega</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menú">
+
+        <a class="navbar-brand fw-semibold" href="./index.html">William Descarrega</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="mainNav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="./index.html">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="./html/contacto.html">Contacto</a></li>
-            <li class="nav-item"><a class="nav-link" href="./html/newsletter.html">Newsletter</a></li>
+
+            <li class="nav-item">
+              <a class="nav-link active" href="./index.html">Inicio</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#servicios">Servicios</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#proyectos">Proyectos</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="./html/contacto.html">Contacto</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="./html/newsletter.html">Newsletter</a>
+            </li>
+
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">¡Pasa a la acción!</a>
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">¡Pasa a la acción!</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="./html/contacto.html">Contame de vos</a></li>
                 <li><a class="dropdown-item" href="./html/newsletter.html">Unite</a></li>
@@ -50,203 +77,397 @@
               </ul>
             </li>
           </ul>
-          <form class="d-flex gap-2" role="search">
-            <label for="q" class="visually-hidden">Buscar</label>
-            <input id="q" class="form-control" type="search" placeholder="Buscar" aria-label="Buscar" />
-            <button class="btn btn-primary" type="submit">Buscar</button>
-          </form>
-          <!-- Botón toggle de tema -->
+
+          <!-- Toggle tema -->
           <button class="btn btn-outline-primary btn-sm ms-2"
-            type="button"
             id="themeToggle"
             data-theme-toggle
             aria-label="Cambiar tema"
             aria-pressed="false">🌙
           </button>
+
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- HOME -->
-  <main class="home-page">
-    <!-- HERO -->
-    <section class="hero py-5">
-      <div class="container wd-container">
-        <div class="row align-items-center g-4">
-          <div class="col-12 col-lg-7" data-aos="fade-up">
-            <h1 class="hero__title mb-3">Tecnología que acelera tu crecimiento</h1>
-            <p class="hero__lead mb-4">
-              Transformá ideas en negocios rentables y sostenibles con estrategia, datos y ejecución.
-            </p>
-            <div class="d-flex gap-2 flex-wrap">
-              <a href="./html/contacto.html" class="btn btn-primary btn-cta">Empezar ahora</a>
-              <a href="./html/newsletter.html" class="btn btn-outline-primary">Ver Newsletter</a>
-            </div>
+
+  <!-- HERO (NUEVO hero--card) -->
+  <section class="hero my-4">
+    <div class="container wd-container">
+      <div class="row align-items-center g-4">
+
+        <!-- Izquierda -->
+        <div class="col-12 col-lg-7" data-aos="fade-up">
+          <span class="badge-claim mb-3">Optimización + Datos</span>
+
+          <h1 class="hero__title mb-3">
+            Digitalizo procesos y transformo datos en decisiones
+          </h1>
+
+          <p class="mb-4">
+            Soy ingeniero industrial y te ayudo a ordenar, medir y automatizar tu negocio
+            para que ganes tiempo, claridad y resultados sostenibles.
+          </p>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <a href="./html/contacto.html" class="btn btn-outline-primary">
+              Quiero mejorar mis procesos
+            </a>
+            <a href="#proyectos" class="btn btn-outline-primary">
+              Ver proyectos
+            </a>
           </div>
-          <div class="col-12 col-lg-5" data-aos="zoom-in">
-            <div class="hero__media ratio ratio-16x9 rounded overflow-hidden">
-              <img class="img-cover" src="./assets/img-union.png" alt="Equipo uniendo piezas, trabajo en equipo" loading="lazy" />
-            </div>
+
+          <p class="text-muted small mt-2">Respondo en menos de 24 horas.</p>
+        </div>
+
+        <!-- Derecha -->
+        <div class="col-12 col-lg-5" data-aos="zoom-in">
+          <div class="ratio ratio-16x9 rounded overflow-hidden">
+            <img src="./assets/img-union.png" class="img-cover" alt="Personas trabajando con datos">
           </div>
         </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- FEATURES (cards) + ASIDE -->
-    <section class="py-5">
-      <div class="container wd-container">
-        <div class="row g-4">
-          <!-- Cards de valor -->
-          <div class="col-12 col-lg-7">
-            <article class="card shadow-sm" data-aos="fade-up">
-              <div class="card-body">
-                <h2 class="h4 mb-3">Gestión del cambio y diseño del futuro</h2>
-                <p class="mb-0">
-                  Adaptate al entorno dinámico con procesos claros, innovación continua y una cultura de aprendizaje. Maximicemos
-                  resiliencia, compromiso y crecimiento sostenible.
-                </p>
-              </div>
-            </article>
 
-            <article class="card shadow-sm mt-4" data-aos="fade-up" data-aos-delay="100">
-              <div class="card-body">
-                <h2 class="h4 mb-3">Hola, soy William Descarrega</h2>
-                <p class="mb-0">
-                  10+ años transformando datos en estrategia y procesos en resultados. Te ayudo a construir negocios sólidos que generen
-                  valor y libertad real.
-                </p>
-              </div>
-            </article>
-          </div>
+  <!-- SERVICIOS -->
+  <section id="servicios" class="py-5">
+    <div class="container wd-container">
+      <header class="text-center mb-4" data-aos="fade-up">
+        <h2 class="h3 mb-2">¿En qué puedo ayudarte?</h2>
+        <p class="text-muted mb-0">Tecnología, datos y procesos para hacer tu negocio más simple.</p>
+      </header>
 
-          <!-- Aside: carrusel + testimonios -->
-          <aside class="col-12 col-lg-5">
-            <!-- Carrusel -->
-            <section class="card shadow-sm mb-4" aria-label="Galería de trabajos" data-aos="fade-left">
-              <div class="card-body p-2">
-                <div id="wdCarousel" class="carousel slide" data-bs-ride="carousel">
-                  <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#wdCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#wdCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#wdCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  </div>
-                  <div class="carousel-inner ratio-16x9 rounded overflow-hidden">
-                    <div class="carousel-item active">
-                      <img src="./assets/carrou_1.jpeg" class="d-block w-100" alt="Reunión con clientes de concesionaria tras venta exitosa" loading="lazy" />
-                    </div>
-                    <div class="carousel-item">
-                      <img src="./assets/carrou_2.jpeg" class="d-block w-100" alt="Reunión con cliente en publicación de su libro" loading="lazy" />
-                    </div>
-                    <div class="carousel-item">
-                      <img src="./assets/carrou_3.jpeg" class="d-block w-100" alt="Reunión posterior a kickoff de proyecto" loading="lazy" />
-                    </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#wdCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Anterior</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#wdCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Siguiente</span>
-                  </button>
-                </div>
-              </div>
-            </section>
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-12 col-md-4" data-aos="fade-up">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5 mb-2">Automatización &amp; Digitalización</h3>
+              <p class="small text-muted mb-3">
+                Power BI, Excel, Power Automate y apps para dejar atrás tareas manuales.
+              </p>
+              <ul class="small mb-0">
+                <li>Flujos automáticos</li>
+                <li>Listas y formularios</li>
+                <li>Plantillas inteligentes</li>
+              </ul>
+            </div>
+          </article>
+        </div>
 
-            <!-- Testimonios -->
-            <section class="card shadow-sm" aria-label="Testimonios de clientes" data-aos="fade-left" data-aos-delay="100">
-              <div class="card-body">
-                <div class="accordion accordion-flush" id="testimonios">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="t1h">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t1" aria-expanded="false" aria-controls="t1">
-                        ⭐⭐⭐⭐⭐ «Transformó mi idea en un negocio rentable»
-                      </button>
-                    </h2>
-                    <div id="t1" class="accordion-collapse collapse" aria-labelledby="t1h" data-bs-parent="#testimonios">
-                      <div class="accordion-body">
-                        «Con la ayuda de William, estructuré mi negocio y pasé de dudar a vender con confianza. ¡Recomendado!» — Lucía G.
-                      </div>
-                    </div>
-                  </div>
+        <!-- Card 2 -->
+        <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5 mb-2">Datos &amp; Análisis</h3>
+              <p class="small text-muted mb-3">
+                Tableros claros, KPI accionables y decisiones con fundamento.
+              </p>
+              <ul class="small mb-0">
+                <li>Dashboards</li>
+                <li>KPI de gestión</li>
+                <li>Análisis de cuellos de botella</li>
+              </ul>
+            </div>
+          </article>
+        </div>
 
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="t2h">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t2" aria-expanded="false" aria-controls="t2">
-                        ⭐⭐⭐⭐⭐ «El empujón que necesitaba para crecer»
-                      </button>
-                    </h2>
-                    <div id="t2" class="accordion-collapse collapse" aria-labelledby="t2h" data-bs-parent="#testimonios">
-                      <div class="accordion-body">
-                        «Mejoramos procesos, optimizamos tiempo y tomé mejores decisiones con claridad numérica.» — Fernando R.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="t3h">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t3" aria-expanded="false" aria-controls="t3">
-                        ⭐⭐⭐⭐⭐ «Un mentor que entiende a los emprendedores»
-                      </button>
-                    </h2>
-                    <div id="t3" class="accordion-collapse collapse" aria-labelledby="t3h" data-bs-parent="#testimonios">
-                      <div class="accordion-body">
-                        «Guía práctica y accionable. Lancé mi negocio con estrategia clara y oferta definida.» — Mariana T.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </aside>
+        <!-- Card 3 -->
+        <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5 mb-2">Calidad &amp; Procesos</h3>
+              <p class="small text-muted mb-3">
+                Normas + procesos simples = calidad sin burocracia.
+              </p>
+              <ul class="small mb-0">
+                <li>Mapeo de procesos</li>
+                <li>ISO / IRIS</li>
+                <li>Mejora continua</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </div>
-    </section>
-  </main>
+
+    </div>
+  </section>
+
+
+  <!-- FEATURES + ASIDE -->
+  <section class="py-5">
+    <div class="container wd-container">
+      <div class="row g-4">
+
+        <!-- Texto -->
+        <div class="col-12 col-lg-7">
+          <article class="card shadow-sm mt-4" data-aos="fade-up">
+            <div class="card-body">
+              <h2 class="h4 mb-3">Tu aliado en procesos y datos</h2>
+              <h2 class="h4 mb-3">Hola, soy William Descarrega</h2>
+
+              <p class="mb-0">
+                Trabajo hace más de 10 años en calidad, datos y mejora de procesos.
+                Ayudo a equipos y emprendedores a pasar del caos de planillas y tareas manuales
+                a procesos claros, datos confiables y automatizaciones simples.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- ASIDE: carrusel + testimonios -->
+        <aside class="col-12 col-lg-5">
+
+          <!-- CAROUSEL -->
+          <section class="card shadow-sm mb-4" data-aos="fade-left">
+            <div class="card-body p-2">
+
+              <div id="wdCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#wdCarousel" data-bs-slide-to="0" class="active"></button>
+                  <button type="button" data-bs-target="#wdCarousel" data-bs-slide-to="1"></button>
+                  <button type="button" data-bs-target="#wdCarousel" data-bs-slide-to="2"></button>
+                </div>
+
+                <div class="carousel-inner ratio-16x9 rounded overflow-hidden">
+                  <div class="carousel-item active">
+                    <img src="./assets/carrou_1.jpeg" class="d-block w-100" alt="">
+                  </div>
+
+                  <div class="carousel-item">
+                    <img src="./assets/carrou_2.jpeg" class="d-block w-100" alt="">
+                  </div>
+
+                  <div class="carousel-item">
+                    <img src="./assets/carrou_3.jpeg" class="d-block w-100" alt="">
+                  </div>
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#wdCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#wdCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+
+            </div>
+          </section>
+
+
+          <!-- TESTIMONIOS -->
+          <section class="card shadow-sm" data-aos="fade-left" data-aos-delay="100">
+            <div class="card-body">
+
+              <div class="accordion accordion-flush" id="testimonios">
+
+                <!-- t1 -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="t1h">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t1">
+                      ⭐⭐⭐⭐⭐ «Transformó mi idea en un negocio rentable»
+                    </button>
+                  </h2>
+                  <div id="t1" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      «Con la ayuda de William, estructuré mi negocio y pasé de dudar a vender con confianza.» — Lucía G.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- t2 -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="t2h">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t2">
+                      ⭐⭐⭐⭐⭐ «El empujón que necesitaba para crecer»
+                    </button>
+                  </h2>
+                  <div id="t2" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      «Mejoramos procesos, optimizamos tiempo y tomé mejores decisiones con claridad numérica.» — Fernando R.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- t3 -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="t3h">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t3">
+                      ⭐⭐⭐⭐⭐ «Un mentor que entiende a los emprendedores»
+                    </button>
+                  </h2>
+                  <div id="t3" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                      «Guía práctica y accionable. Lancé mi negocio con estrategia clara y oferta definida.» — Mariana T.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="container wd-container">
+      <div class="row align-items-center g-3">
+
+        <div class="col-12 col-lg-8">
+          <h2 class="h4 mb-2">¿Querés ordenar tus procesos y tomar decisiones con datos?</h2>
+          <p class="mb-3">El primer paso es una conversación de 15 minutos sin compromiso.</p>
+          <p class="mb-0">
+            Te escucho, analizamos tu contexto y definimos un primer paso concreto.
+          </p>
+        </div>
+
+        <div class="col-12 col-lg-4 text-lg-end">
+          <a href="https://calendly.com/wadescarrega/30min" class="btn btn-light">Agendar una conversación</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="py-5 border-top">
+    <div class="container wd-container">
+      <header class="mb-4 text-center" data-aos="fade-up">
+        <h2 class="h3 mb-2">Proyectos y resultados</h2>
+        <p class="text-muted mb-0">Procesos + datos + tecnología aplicados en casos reales.</p>
+      </header>
+
+      <div class="row g-4">
+
+        <!-- Proyecto 1 -->
+        <div class="col-12 col-lg-4" data-aos="fade-up">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5 mb-2">Dashboard de Gestión de Calidad</h3>
+              <p class="small text-muted">
+                Tablero en Power BI para seguimiento de no conformidades.
+              </p>
+              <ul class="small mb-3">
+                <li>Integración de datos</li>
+                <li>Visibilidad total</li>
+                <li>Menor retrabajo</li>
+              </ul>
+              <p class="small mb-0"><strong>Resultado:</strong> decisiones más rápidas.</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Proyecto 2 -->
+        <div class="col-12 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5 mb-2">Automatización de Vencimientos EHS</h3>
+              <p class="small text-muted">
+                Power Automate + SharePoint para avisos automáticos.
+              </p>
+              <ul class="small mb-3">
+                <li>Emails automáticos</li>
+                <li>Listas centralizadas</li>
+                <li>Cero olvidos</li>
+              </ul>
+              <p class="small mb-0"><strong>Resultado:</strong> mejor control EHS.</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Proyecto 3 -->
+        <div class="col-12 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <article class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5 mb-2">Diseño de Procesos y KPIs</h3>
+              <p class="small text-muted">
+                Ayuda a emprendedores a organizarse y medir bien.
+              </p>
+              <ul class="small mb-3">
+                <li>Oferta clara</li>
+                <li>Procesos simples</li>
+                <li>KPI accionables</li>
+              </ul>
+              <p class="small mb-0"><strong>Resultado:</strong> negocios más claros.</p>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 
   <!-- FOOTER -->
-  <footer class="bg-body-tertiary py-5 mt-4">
+  <footer class="py-5 mt-4">
     <div class="container wd-container">
+
       <div class="row g-4 align-items-center justify-content-between">
+
+        <!-- Cita -->
         <div class="col-12 col-lg-8">
           <div class="card">
-            <div class="card-header"><p class="mb-0 text-muted">Alguien dijo…</p></div>
+            <div class="card-header">
+              <p class="mb-0 text-muted">Alguien dijo…</p>
+            </div>
             <div class="card-body">
               <blockquote class="blockquote mb-0">
                 <p class="mb-1">«La calidad de tus pensamientos define la calidad de tu vida»</p>
-                <footer class="blockquote-footer">Tony Robbins <cite title="Poder sin límites">Poder sin límites</cite></footer>
+                <footer class="blockquote-footer">
+                  Tony Robbins
+                </footer>
               </blockquote>
             </div>
           </div>
         </div>
 
-        <div class="col-12 col-lg-4 d-flex flex-column align-items-lg-end align-items-center text-center text-lg-end">
-          <nav class="mb-2" aria-label="Enlaces de pie de página">
-            <ul class="list-inline mb-0">
+        <!-- Datos personales -->
+        <div class="col-12 col-lg-4 d-flex flex-column align-items-lg-end align-items-center">
+          <nav class="mb-2">
+            <ul class="list-inline mb-0 text-center text-lg-end">
               <li class="list-inline-item"><a class="link-primary" href="./index.html">Inicio</a></li>
               <li class="list-inline-item"><a class="link-primary" href="./html/contacto.html">Contacto</a></li>
               <li class="list-inline-item"><a class="link-primary" href="./html/newsletter.html">Newsletter</a></li>
             </ul>
           </nav>
-          <div>
-            <p class="mb-1">Contacto: <a href="mailto:wadescarrega@gmail.com" class="link-primary">wadescarrega@gmail.com</a></p>
-            <img class="footer-brand rounded-circle border" src="assets/logo.png" alt="Logo WD" width="56" height="56" loading="lazy" decoding="async">
+
+          <div class="text-center text-lg-end">
+            <p class="mb-1">Contacto:
+              <a href="mailto:wadescarrega@gmail.com" class="link-primary">wadescarrega@gmail.com</a>
+            </p>
+            <img class="footer-brand rounded-circle border" src="assets/logo.png" alt="Logo WD" width="56" height="56">
           </div>
         </div>
+
       </div>
     </div>
   </footer>
+
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" crossorigin="anonymous" defer></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script>
-    window.addEventListener('DOMContentLoaded', function(){
+    window.addEventListener('DOMContentLoaded', () => {
       if (window.AOS) AOS.init();
     });
   </script>
   <script src="./js/theme.js" defer></script>
+
 </body>
 </html>

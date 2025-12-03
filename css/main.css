@@ -1,1323 +1,273 @@
-@charset "UTF-8";
-/* ---- Config (no imprimen CSS salvo reset/tipo) */
-/* === Paleta base (sobria + tech) === */
-/* Acento (acción/CTA) */
-/* === Semánticos (única fuente de verdad) === */
-/* === Variables CSS (para usar en todo el UI) === */
+/* ===== PALETA WD (Tarjeta oficial) ===== */
 :root {
-  --c-brand: #336261;
-  --c-brand-2: #313B3B;
-  --c-accent: #F59E0B;
-  --c-warning: #F59E0B;
-  --c-text: #292B2B;
-  --c-text-invert: #FFFFFF;
-  --c-bg: #D3D3D3;
-  --c-surface: #FFFFFF;
-  --c-muted: #C5CED0;
+  --c-brand: #406A67;       /* Verde petróleo oscuro - principal 2D6F6A*/
+  --c-accent: #3B8F88;      /* Verde petróleo claro - acento */
+  --c-brand-2: #1A2324;     /* Gris antracita - fondo oscuro */
+  --c-text-invert: #FFFFFF; /* Blanco puro */
+  --c-text: #292B2B;        /* Gris neutro para lectura */
+  --c-bg: #F5F5F5;          /* Fondo claro */
+  --c-surface: #FFFFFF;     /* Tarjetas blancas */
+  --c-muted: #C6C6C6;       /* Bordes suaves */
 }
 
-/* === Compat mínima con layouts viejos === */
-/* Maps legacy usados en tu SCSS actual */
-/* === Bridge: mapeo de tu tema a Bootstrap === */
-:root {
-  /* Core */
-  --bs-body-bg: var(--c-bg);
-  --bs-body-color: var(--c-text);
-  --bs-border-color: var(--c-muted);
-  /* Brand */
-  --bs-primary: var(--c-accent); /* botones primarios, links “primary” */
-  --bs-secondary: var(--c-brand-2);
-  --bs-link-color: var(--c-accent);
-  --bs-link-hover-color: var(--c-brand);
-  /* Superficies */
-  --bs-card-bg: var(--c-surface);
-  --bs-navbar-bg: var(--c-surface);
-  --bs-tertiary-bg: var(--c-surface);
+/* ======================================================= */
+/* RESET BASICO                                             */
+/* ======================================================= */
+*,*::before,*::after { box-sizing: border-box; }
+body {
+  margin:0;
+  background:var(--c-bg);
+  color:var(--c-text);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
 
-/* === Ajuste de botones outline para que usen tu acento === */
-.btn-outline-primary {
-  --bs-btn-color: var(--c-accent);
-  --bs-btn-border-color: var(--c-accent);
-  --bs-btn-hover-color: var(--c-text-invert);
-  --bs-btn-hover-bg: var(--c-accent);
-  --bs-btn-hover-border-color: var(--c-accent);
-  --bs-btn-active-color: var(--c-text-invert);
-  --bs-btn-active-bg: var(--c-accent);
-  --bs-btn-active-border-color: var(--c-accent);
+/* ======================================================= */
+/* NAVBAR WD                                                */
+/* ======================================================= */
+.navbar {
+  background:var(--c-surface);
+  border-bottom:1px solid var(--c-muted);
 }
 
-/* === Mapear esquema Bootstrap a tu tema === */
-:root {
-  /* Primary = tu acento */
-  --bs-primary: var(--c-accent);
-  --bs-primary-rgb: 245, 158, 11; /* #F59E0B aprox */
-  /* Success = también tu acento (para btn-outline-success existentes) */
-  --bs-success: var(--c-accent);
-  --bs-success-rgb: 245, 158, 11;
+.navbar-brand {
+  color:var(--c-brand-2);
+  font-weight:700;
 }
 
-/* Botón sólido primary con tu acento */
+.navbar-brand:hover {
+  color:var(--c-brand);
+}
+
+.nav-link {
+  color:var(--c-text);
+  border-radius:999px;
+  padding:.4rem .9rem;
+}
+.nav-link:hover {
+  background:var(--c-brand);
+  color:var(--c-text-invert);
+}
+.nav-link.active {
+  background: var(--c-brand-2) !important;
+  color: #FFFFFF !important;
+  border-radius: 999px;
+}
+
+/* ======================================================= */
+/* BOTONES WD                                               */
+/* ======================================================= */
 .btn-primary {
-  --bs-btn-bg: var(--c-accent);
-  --bs-btn-border-color: var(--c-accent);
-  --bs-btn-color: var(--c-text-invert);
-  --bs-btn-hover-bg: var(--c-brand);
-  --bs-btn-hover-border-color: var(--c-brand);
-  --bs-btn-hover-color: var(--c-text-invert);
-  --bs-btn-active-bg: var(--c-brand);
-  --bs-btn-active-border-color: var(--c-brand);
+  background:var(--c-brand);
+  border-color:var(--c-brand);
+  color:var(--c-text-invert);
 }
-
-/* Botón outline primary con tu acento */
+.btn-primary:hover {
+  background:var(--c-accent);
+  border-color:var(--c-accent);
+  color:var(--c-text-invert);
+}
 .btn-outline-primary {
-  --bs-btn-color: var(--c-accent);
-  --bs-btn-border-color: var(--c-accent);
-  --bs-btn-hover-color: var(--c-text-invert);
-  --bs-btn-hover-bg: var(--c-accent);
-  --bs-btn-hover-border-color: var(--c-accent);
-  --bs-btn-active-color: var(--c-text-invert);
-  --bs-btn-active-bg: var(--c-accent);
-  --bs-btn-active-border-color: var(--c-accent);
+  color:var(--c-accent);
+  border-color:var(--c-accent);
+}
+.btn-outline-primary:hover {
+  background:var(--c-accent);
+  border-color:var(--c-accent);
+  color:var(--c-text-invert);
+}
+.btn-cta {
+  border-radius:999px;
+  padding-inline:1.2rem;
 }
 
-/* Botón outline success (para no cambiar HTML que ya usa “success”) */
-.btn-outline-success {
-  --bs-btn-color: var(--c-accent);
-  --bs-btn-border-color: var(--c-accent);
-  --bs-btn-hover-color: var(--c-text-invert);
-  --bs-btn-hover-bg: var(--c-accent);
-  --bs-btn-hover-border-color: var(--c-accent);
-  --bs-btn-active-color: var(--c-text-invert);
-  --bs-btn-active-bg: var(--c-accent);
-  --bs-btn-active-border-color: var(--c-accent);
-}
-
-:root {
-  /* Core */
-  --bs-body-bg: var(--c-bg);
-  --bs-body-color: var(--c-text);
-  --bs-border-color: var(--c-muted);
-  /* Brand */
-  --bs-primary: var(--c-accent);
-  --bs-primary-rgb: 245, 158, 11; /* #F59E0B */
-  --bs-success: var(--c-accent); /* para .btn-outline-success existentes */
-  --bs-success-rgb: 245, 158, 11;
-  /* Links */
-  --bs-link-color: var(--c-accent);
-  --bs-link-hover-color: var(--c-brand);
-  /* Superficies */
-  --bs-card-bg: var(--c-surface);
-  --bs-navbar-bg: var(--c-surface);
-  --bs-tertiary-bg: var(--c-surface);
-}
-
-/* ---- Config (no imprimen CSS salvo reset/tipo) */
-/* Helpers básicos */
-/* Contenedor centrado */
-/* Tipografía fluida */
-/* Borde estándar sin depender de $white */
-/* Compat mixin antiguo */
-/* -------------------- MQ (Media Queries) -------------------- */
-/* --- Reset minimalista y accesible --- */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  /* No uses variables aquí si _tipo.scss no se importa antes */
-  background: var(--c-bg);
-  color: var(--c-text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-img, video {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-button, input, textarea, select {
-  font: inherit;
-}
-
-/* para usar fluid-type/container acá */
-/* Fuentes */
-/* Tamaños base */
-/* Base */
-body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
-  line-height: 1.6;
-}
-
-/* Titulares fluidos */
-h1 {
-  font-size: clamp(1.5rem, 2vw + 0.75rem, 2.25rem);
-  line-height: 1.2;
-}
-
-h2 {
-  font-size: clamp(1.25rem, 2vw + 0.625rem, 1.75rem);
-  line-height: 1.25;
-}
-
-h3 {
-  font-size: clamp(1.125rem, 2vw + 0.5625rem, 1.5rem);
-  line-height: 1.3;
-}
-
-/* Utilidades de tamaño */
-.text-xs {
-  font-size: 0.75rem;
-}
-
-.text-s {
-  font-size: 0.875rem;
-}
-
-.text-m {
-  font-size: 1rem;
-}
-
-.text-l {
-  font-size: 1.25rem;
-}
-
-/* Utilidades globales */
-:root {
-  --wd-maxw: 1200px;
-}
-
-.wd-container {
-  max-width: var(--wd-maxw);
-  margin-inline: auto;
-  padding-inline: 1rem;
+/* ======================================================= */
+/* HERO WD — Estilo Tarjeta (OPCIÓN 1)                     */
+/* ======================================================= */
+.hero {
+  background:var(--c-brand-2);
+  padding:4rem 0;
+  position:relative;
+  overflow:hidden;
 }
 
 .hero {
-  background: var(--bs-body-bg);
+  color: #FFFFFF;
+}
+
+.hero .hero__title,
+.hero p,
+.hero span,
+.hero li,
+.hero a {
+  color: #FFFFFF !important;
+}
+
+.hero .btn-outline-primary {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+.hero .btn-outline-primary:hover {
+  background: var(--c-brand-2);
+  color: #406A67; /* El nuevo verde */
+}
+
+
+.hero::before {
+  content:"";
+  position:absolute;
+  inset:0 45% 0 0;
+  background:var(--c-brand);
+  transform:skewX(-18deg);
+}
+
+.hero .wd-container {
+  position:relative;
+  z-index:2;
 }
 
 .hero__title {
-  font-weight: 700;
+  color:var(--c-text-invert);
+  font-weight:800;
+  font-size:2.4rem;
+  line-height:1.2;
 }
 
-.img-fit {
-  width: 100%;
-  height: auto;
-  display: block;
+.hero__lead {
+  color:var(--c-text-invert);
+  opacity:.95;
+  font-size:1.15rem;
 }
 
-.img-cover {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.hero__media img {
+  border-radius:14px;
+  border:4px solid var(--c-accent);
 }
 
-.ratio-16x9 {
-  aspect-ratio: 16/9;
+/* ======================================================= */
+/* CARDS                                                    */
+/* ======================================================= */
+.card {
+  background:var(--c-surface);
+  border:1px solid var(--c-muted);
+  border-radius:14px;
+  box-shadow:0 8px 22px rgba(0,0,0,.06);
 }
 
-.footer-brand {
-  width: 56px;
-  height: 56px;
+/* ======================================================= */
+/* ACCORDION                                                */
+/* ======================================================= */
+.accordion-item {
+  border:1px solid var(--c-muted);
+}
+.accordion-button {
+  background:var(--c-surface);
+  color:var(--c-text);
+}
+.accordion-button:not(.collapsed) {
+  background:var(--c-brand);
+  color:var(--c-text-invert);
+}
+.accordion-body {
+  background:var(--c-surface);
+}
+
+/* ======================================================= */
+/* CAROUSEL WD                                              */
+/* ======================================================= */
+.carousel-inner {
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 10px 24px rgba(0,0,0,.08);
 }
 
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.7));
+  filter:drop-shadow(0 0 3px rgba(0,0,0,.6));
 }
 
-p {
-  line-height: 1.65;
+/* ======================================================= */
+/* CTA FINAL                                                */
+/* ======================================================= */
+.cta-final,
+.bg-primary {
+  background:var(--c-brand) !important;
+  color:var(--c-text-invert) !important;
+}
+.cta-final .btn,
+.bg-primary .btn {
+  background:var(--c-accent);
+  border-color:var(--c-accent);
+  color:var(--c-text-invert);
+}
+.cta-final .btn:hover,
+.bg-primary .btn:hover {
+  background:var(--c-brand-2);
+  border-color:var(--c-brand-2);
 }
 
-/* ---- Config (no imprimen CSS salvo reset/tipo) */
-/* Tema claro (lo tenés en :root de _colors.scss) — lo dejamos tal cual */
-/*------------------------------------
-  TEMA OSCURO — override con CSS vars
-  Nota: mantenemos el branding pero ajustamos contraste y luminancia
-------------------------------------*/
-:root[data-theme=dark] {
-  /* paleta base dark */
-  --c-bg: #0f1415; /* fondo general */
-  --c-surface: #161c1d; /* tarjetas/navbar */
-  --c-text: #e7ecef; /* texto principal */
-  --c-text-invert:#0e1111; /* texto sobre fondos claros */
-  /* nuevo: alpha ya precalculada para evitar usar color.change con var() */
-  --c-accent-alpha: rgba(34, 197, 94, 0.22);
-  /* ajustes de colores derivados usando Sass (estos sí son valores fijos) */
-  --c-muted: rgb(138.1964285714, 139.1022727273, 139.3035714286);
-  --c-brand: rgb(64.9651006711, 124.8348993289, 123.5610738255);
-  --c-brand-2: rgb(72.1388888889, 86.8611111111, 86.8611111111);
-  --c-accent: #F59E0B; /* acento accesible en dark*/
-  --c-warning: rgb(246.0039370079, 167.7381889764, 35.4960629921);
+/* ======================================================= */
+/* FORMULARIOS                                              */
+/* ======================================================= */
+form.card {
+  border-radius:16px;
+  padding:1.25rem 1.5rem;
 }
-
-/*------------------------------------
-  COMPONENTES EN DARK MODE
-------------------------------------*/
-[data-theme=dark] {
-  /* Navbar */
-  /* Tarjetas */
-  /* Botón acordeón */
-  /* Listas */
-  /* Badge */
-  /* Botones */
-  /* Formularios */
+.form-control,
+.form-select {
+  border-radius:12px;
+  border:1px solid var(--c-muted);
+  padding:.65rem .9rem;
 }
-[data-theme=dark] body {
-  background: var(--c-bg);
-  color: var(--c-text);
-}
-[data-theme=dark] .navbar.bg-body-tertiary {
-  background-color: var(--c-surface) !important;
-  border-bottom: 1px solid var(--c-muted);
-}
-[data-theme=dark] .card {
-  background-color: var(--c-surface);
-  border-color: var(--c-muted);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
-}
-[data-theme=dark] .accordion-button {
-  background-color: var(--c-surface);
-  color: var(--c-text);
-}
-[data-theme=dark] .accordion-button:not(.collapsed) {
-  background-color: #336261; /* usamos $brand fijo */
-  color: var(--c-text);
-  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.03);
-}
-[data-theme=dark] .accordion-button::after {
-  filter: invert(0.85);
-}
-[data-theme=dark] .list-group-item {
-  background-color: var(--c-surface);
-  border-color: var(--c-muted);
-}
-[data-theme=dark] .badge.text-bg-primary {
-  background-color: var(--c-brand) !important;
-  color: var(--c-text-invert) !important;
-}
-[data-theme=dark] .btn-primary {
-  background-color: var(--c-brand);
-  border-color: var(--c-brand);
-}
-[data-theme=dark] .btn-primary:hover {
-  background-color: rgb(40.5261744966, 77.8738255034, 77.0791946309);
-}
-[data-theme=dark] .btn-primary:active {
-  background-color: rgb(33.5436241611, 64.4563758389, 63.7986577181);
-}
-[data-theme=dark] .btn-outline-primary {
-  color: var(--c-brand);
-  border-color: var(--c-brand);
-}
-[data-theme=dark] .btn-outline-primary:hover {
-  background-color: var(--c-brand);
-  color: var(--c-text-invert);
-}
-[data-theme=dark] .btn-outline-primary:active {
-  background-color: rgb(33.5436241611, 64.4563758389, 63.7986577181);
-}
-[data-theme=dark] .form-control, [data-theme=dark] .form-select, [data-theme=dark] textarea.form-control {
-  background: #101516;
-  color: var(--c-text);
-  border-color: var(--c-muted);
-}
-[data-theme=dark] .form-control:focus, [data-theme=dark] .form-select:focus, [data-theme=dark] textarea.form-control:focus {
-  border-color: var(--c-accent);
-  /* usamos la variable precalculada para alpha */
-  box-shadow: 0 0 0 0.2rem var(--c-accent-alpha);
-}
-
-/*------------------------------------
-  THEME CONFIG BASE (modo claro por defecto)
-------------------------------------*/
-:root {
-  /* Variables de color base */
-  --c-accent: #F59E0B;
-  --c-accent-alpha: rgba(34, 197, 94, 0.22); /* alpha precalculado */
-  --c-bg: #ffffff;
-  --c-text: #1f2937;
-}
-
-[data-theme=dark] {
-  --c-accent: #4ade80;
-  --c-accent-alpha: rgba(74, 222, 128, 0.22); /* equivalente en dark mode */
-  --c-bg: #1f2937;
-  --c-text: #f9fafb;
-}
-
-/*------------------------------------
-  FOCUS STYLES (común a todos los temas)
-------------------------------------*/
 .form-control:focus,
-.form-select:focus,
-textarea.form-control:focus {
-  border-color: var(--c-accent);
-  /* ya no usamos color.change para evitar error con var() */
-  box-shadow: 0 0 0 0.2rem var(--c-accent-alpha);
+.form-select:focus {
+  border-color:var(--c-accent);
+  box-shadow:0 0 0 0.2rem rgba(59,143,136,.35);
 }
 
-/* ---- Layout (estos sí generan CSS de la UI) */
-/* ---- Config (no imprimen CSS salvo reset/tipo) */
-/*-----------------------MENU (Navbar + helpers)-----------------------*/
-/* Navbar base */
-.navbar {
-  background-color: var(--c-surface);
-  border-bottom: 1px solid var(--c-muted);
-  backdrop-filter: saturate(120%) blur(4px);
-}
-
-.navbar-brand {
-  color: var(--c-text);
-  font-weight: 700;
-}
-.navbar-brand:hover, .navbar-brand:focus {
-  color: var(--c-brand);
-}
-
-/* Links del menú */
-.nav-link {
-  color: var(--c-text);
-  opacity: 0.9;
-  transition: color 0.2s ease;
-}
-.nav-link:hover, .nav-link:focus {
-  color: var(--c-brand);
-  opacity: 1;
-}
-.nav-link.active {
-  color: var(--c-accent);
-  font-weight: 600;
-}
-
-/* Dropdown */
-.dropdown-menu {
-  background-color: var(--c-surface);
-  border: 1px solid var(--c-muted);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-}
-
-.dropdown-item {
-  color: var(--c-text);
-}
-.dropdown-item:hover, .dropdown-item:focus {
-  background-color: var(--c-bg);
-  color: var(--c-brand);
-}
-
-/* Toggler (hamburger) */
-.navbar-toggler {
-  border-color: var(--c-muted);
-}
-.navbar-toggler:focus {
-  box-shadow: none;
-}
-
-/* Botón de búsqueda (sin tocar HTML) */
-.navbar .btn-outline-success {
-  --bs-btn-color: var(--c-accent);
-  --bs-btn-border-color: var(--c-accent);
-  --bs-btn-hover-color: var(--c-text-invert);
-  --bs-btn-hover-bg: var(--c-accent);
-  --bs-btn-hover-border-color: var(--c-accent);
-}
-
-/*-----------------------Helpers previos (limpios)-----------------------*/
-.center-w {
-  text-align: center;
-}
-
-/* Si tu mixin border-w acepta color, usamos el tema; si no, quitá el argumento */
-.col-btn-w {
-  background-color: var(--c-muted);
-  color: var(--c-text-invert);
-  /* usa el color pasado; si no, usa la CSS var o el currentColor */
-  border: 3px solid var(--c-muted);
-  border-radius: 15px;
-}
-
-/* Contenedor de botones/acciones */
-.w-col-btn-cont {
-  background-color: var(--c-muted);
-  color: var(--c-text-invert);
-  /* usa el color pasado; si no, usa la CSS var o el currentColor */
-  border: 3px solid var(--c-muted);
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Enlaces globales (fuera del navbar) */
+/* ======================================================= */
+/* LINKS                                                    */
+/* ======================================================= */
 main a:not(.nav-link),
 footer a:not(.nav-link) {
-  color: var(--c-accent);
-  text-decoration: none;
+  color:var(--c-accent);
+  text-decoration:none;
 }
-main a:not(.nav-link):visited,
-footer a:not(.nav-link):visited {
-  color: var(--c-warning);
-  text-decoration: underline;
-}
-main a:not(.nav-link):hover, main a:not(.nav-link):focus,
-footer a:not(.nav-link):hover,
-footer a:not(.nav-link):focus {
-  color: var(--c-brand);
-  text-decoration: underline;
-}
-main a:not(.nav-link):active,
-footer a:not(.nav-link):active {
-  color: var(--c-text-invert);
-  background-color: var(--c-accent);
+main a:not(.nav-link):hover,
+footer a:not(.nav-link):hover {
+  color:var(--c-brand);
+  text-decoration:underline;
 }
 
-/* Responsive tweaks si los necesitás */
-@media (min-width: 992px) {
-  .navbar {
-    border-radius: 12px;
-  }
-}
-/* Nav links con hover tipo botón (sin tocar HTML) */
-/* Píldora + tres estados */
-.navbar .nav-link {
-  position: relative;
-  border-radius: 999px;
-  padding: 0.375rem 0.75rem;
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-  color: var(--c-text);
+/* ======================================================= */
+/* DARK MODE WD                                             */
+/* ======================================================= */
+:root[data-theme="dark"] {
+  --c-bg:#0E0F0F;
+  --c-surface:#161819;
+  --c-text:#EAEAEA;
+  --c-muted:#303233;
 }
 
-/* 1) Hover */
-nav.navbar .navbar-nav .nav-link:hover,
-nav.navbar .navbar-nav .nav-link:focus {
-  background-color: rgb(216.525984252, 139.3220472441, 8.874015748);
-  color: #FFFFFF; /* ahora texto blanco */
-  text-decoration: none;
+/* NAVBAR brand en modo dark */
+:root[data-theme="dark"] .navbar-brand {
+  color: #FFFFFF !important;
 }
 
-/* 2) Active (mousedown) */
-.navbar .nav-link:active {
-  background-color: rgb(187.1307086614, 120.4078740157, 7.6692913386);
-  color: #FFFFFF;
+[data-theme="dark"] body { background:var(--c-bg); }
+[data-theme="dark"] .navbar { background:var(--c-surface); }
+[data-theme="dark"] .card { background:var(--c-surface); }
+[data-theme="dark"] .accordion-body { background:var(--c-surface); }
+[data-theme="dark"] .hero::before { background:var(--c-brand); }
+
+/* ======================================================= */
+/* RESPONSIVE                                               */
+/* ======================================================= */
+@media(max-width:768px){
+  .hero__title{ font-size:2rem; }
+}
+@media(max-width:576px){
+  .hero::before{ inset:0 60% 0 0; }
+  .hero__title{ font-size:1.75rem; }
 }
 
-/* 3) Visitado → solo cambia el color del texto */
-.navbar .nav-link:visited {
-  color: rgb(206.7275590551, 133.0173228346, 8.4724409449);
-}
-
-/* Estado active de la página actual como pastilla de marca */
-.navbar .nav-link.active[aria-current=page] {
-  background-color: var(--c-brand);
-  color: #FFFFFF;
-  font-weight: 600;
-}
-
-/* Accesibilidad */
-.navbar .nav-link:focus-visible {
-  outline: 2px solid var(--c-accent);
-  outline-offset: 2px;
-}
-
-/* ---- Config (no imprimen CSS salvo reset/tipo) */
-/*-----------------------MAIN-----------------------*/
-h1 {
-  color: var(--c-brand);
-  font-size: clamp(1.5rem, 2vw + 0.75rem, 2.25rem);
-  text-align: center;
-  padding-top: 20px;
-  margin-bottom: 20px;
-}
-
-.padre {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  gap: 1rem;
-}
-.padre__h2 {
-  color: var(--c-text-invert); /* texto claro sobre fondos oscuros */
-  font-size: 1.25rem;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.padre__h2__top {
-  font-size: 1rem;
-  color: var(--c-brand);
-  text-align: center;
-}
-.padre form {
-  margin: 10px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-.padre form label {
-  display: flex;
-  text-transform: uppercase;
-}
-.padre__hijo {
-  margin: 1em;
-  padding: 1em;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-.padre__hijo__caja {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.75rem;
-  /* usa el color pasado; si no, usa la CSS var o el currentColor */
-  border: 3px solid var(--c-muted);
-  border-radius: 15px;
-  /* borde acorde al tema */
-  background-color: var(--c-surface); /* tarjeta clara */
-  color: var(--c-text); /* texto oscuro = mejor contraste */
-  text-align: justify;
-  padding: 1rem;
-}
-.padre__hijo__caja h3 {
-  font-size: 0.875rem;
-}
-
-.caja {
-  width: auto;
-  height: auto;
-  min-height: 12rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.75rem;
-  /* usa el color pasado; si no, usa la CSS var o el currentColor */
-  border: 3px solid var(--c-muted);
-  border-radius: 15px;
-  margin: 10px;
-  padding: 10px;
-  background-color: var(--c-surface);
-  color: var(--c-text);
-  text-align: justify;
-  padding: 1rem;
-}
-.caja h3 {
-  font-size: 0.875rem;
-}
-.caja__nws {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 10px;
-  padding: 10px;
-  /* usa el color pasado; si no, usa la CSS var o el currentColor */
-  border: 3px solid var(--c-muted);
-  border-radius: 15px;
-  color: var(--c-text-invert);
-  background-color: var(--c-brand-2); /* bloque destacado oscuro */
-  padding: 0.75rem;
-}
-.caja__nws__h3 {
-  font-size: 1rem;
-  margin: 5px;
-  padding: 5px;
-  text-decoration: underline;
-  color: var(--c-warning); /* acento ámbar para titulares */
-}
-
-h3 {
-  font-size: 1rem;
-  margin: 5px;
-  padding: 5px;
-  text-decoration: underline;
-  color: var(--c-warning);
-}
-
-.contenedor {
-  background-color: var(--c-brand);
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  color: var(--c-text-invert);
-}
-
-.form {
-  font-style: italic;
-}
-
-.center-w {
-  text-align: center;
-}
-
-.subs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.75rem;
-  margin: 10px;
-  padding: 10px;
-}
-
-/* Responsive */
-@media (min-width: 768px) {
-  .padre {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
-  .padre__hijo {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 992px) {
-  .padre__hijo {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-/*---------------- HERO ----------------*/
-.hero {
-  background-color: var(--c-brand-2); /* fondo oscuro sobrio */
-  color: var(--c-text-invert);
-  padding: 3rem 0;
-}
-.hero .hero__title {
-  color: var(--c-accent); /* título con acento */
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.hero p {
-  color: var(--c-text-invert);
-}
-.hero img {
-  border-radius: 0.5rem;
-  border: 3px solid var(--c-accent);
-}
-
-/* ---- Config (no imprimen CSS salvo reset/tipo) */
-/* ===== Hero estilo “business card” ===== */
-.hero--card {
-  position: relative;
-  border-radius: 18px;
-  background-color: var(--c-surface); /* lado claro */
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-  /* panel oscuro con corte diagonal a la izquierda */
-  /* elevar contenido por encima del ::before */
-}
-.hero--card::before {
-  content: "";
-  position: absolute;
-  inset: 0 55% 0 0; /* ancho del panel oscuro */
-  background: var(--c-brand-2); /* gunmetal */
-  transform: skewX(-12deg);
-  transform-origin: left top;
-}
-.hero--card .wd-container {
-  position: relative;
-}
-
-/* patrón de puntos sutil del fondo */
-.dot-bg {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
-  background-size: 14px 14px;
-}
-
-/* claim en cinta caribbean (como el bloque “Digitalizá tu negocio”) */
-.badge-claim {
-  position: relative;
-  display: inline-block;
-  margin: 0;
-  padding: 0.9rem 1.25rem;
-  background: var(--c-brand); /* caribbean #336261 */
-  color: var(--c-text-invert);
-  border-radius: 10px;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
-}
-
-/* título y textos dentro del panel oscuro: blanco */
-.hero--card .hero__title,
-.hero--card .hero__title + p {
-  color: var(--c-text-invert);
-}
-
-/* tarjeta de contacto del lado derecho */
-.contact-card {
-  background: var(--c-surface);
-  border: 1px solid var(--c-muted);
-  border-radius: 16px;
-  padding: 1rem 1.25rem;
-}
-
-/* lista de contactos con icono redondo */
-.contact-list {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.contact-item {
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.contact-item__icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--c-brand-2);
-  color: var(--c-text-invert);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-}
-
-/* botón/CTA destacado */
-.btn-cta {
-  --bs-btn-bg: var(--c-accent);
-  --bs-btn-border-color: var(--c-accent);
-  --bs-btn-color: var(--c-text-invert);
-  --bs-btn-hover-bg: var(--c-brand);
-  --bs-btn-hover-border-color: var(--c-brand);
-  --bs-btn-hover-color: var(--c-text-invert);
-  border-radius: 999px;
-  padding-inline: 1.1rem;
-}
-
-/* cards y bloques “quote” más limpios */
-.card {
-  border: 1px solid var(--c-muted);
-  border-radius: 16px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-}
-
-.card-header {
-  background: var(--c-surface);
-}
-
-/* imágenes redondeadas finas como en la tarjeta */
-.hero--card img {
-  border-radius: 10px;
-}
-
-/* spacing responsive */
-@media (min-width: 768px) {
-  .hero--card::before {
-    inset: 0 58% 0 0;
-  }
-}
-@media (min-width: 992px) {
-  .hero--card::before {
-    inset: 0 60% 0 0;
-  }
-}
-/* ---- Config (no imprimen CSS salvo reset/tipo) */
-/* $txt-size */
-/*-----------------------ASIDE-----------------------*/
-/* Bloque “comentarios” con look de tarjeta */
-.comentarios {
-  margin: 10px;
-  padding: 10px;
-  /* usa el color pasado; si no, usa la CSS var o el currentColor */
-  border: 3px solid var(--c-muted);
-  border-radius: 15px;
-  background: var(--c-surface);
-  color: var(--c-text);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
-  min-height: 6rem;
-  border-radius: 16px;
-}
-.comentarios__h3 {
-  font-size: 0.875rem;
-  color: var(--c-brand);
-  margin: 0;
-}
-.comentarios div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  min-height: 12rem;
-}
-.comentarios p {
-  margin: 10px;
-  padding: 10px;
-  color: var(--c-text);
-}
-
-/* Wrapper lateral (carrusel / acordeón) */
-.publi-w {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin: 10px;
-  padding: 10px;
-}
-
-/* Botón auxiliar */
-.col-btn-w {
-  background-color: var(--c-muted);
-  color: var(--c-text-invert);
-  /* usa el color pasado; si no, usa la CSS var o el currentColor */
-  border: 3px solid var(--c-muted);
-  border-radius: 15px;
-}
-
-/* Carousel: bordes y sombra suaves */
-.carousel .carousel-inner {
-  border-radius: 12px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-}
-
-/* Accordion con paleta propia */
-.accordion-item {
-  background: var(--c-surface);
-  border: 1px solid var(--c-muted);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.accordion-button {
-  background: var(--c-surface);
-  color: var(--c-text);
-}
-.accordion-button:not(.collapsed) {
-  color: var(--c-brand);
-  background: var(--c-bg);
-  box-shadow: none;
-}
-.accordion-button:focus {
-  box-shadow: none;
-}
-
-.accordion-body {
-  background: var(--c-surface);
-  color: var(--c-text);
-}
-
-/* Responsive */
-@media (min-width: 768px) {
-  .publi-w {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-/* ---- Config (no imprimen CSS salvo reset/tipo) */
-/* ===== Home (scoped) ===== */
-.home-page {
-  /* HERO */
-  /* Cards */
-  /* Acordeón (testimonios) */
-}
-.home-page .hero {
-  background: linear-gradient(135deg, rgb(37.0348993289, 71.1651006711, 70.4389261745) 0%, rgb(61.4738255034, 118.1261744966, 116.9208053691) 100%);
-  color: #FFFFFF;
-}
-.home-page .hero .hero__title {
-  font-size: clamp(1.75rem, 2vw + 0.875rem, 2.5rem);
-  font-weight: 700;
-}
-.home-page .hero .hero__lead {
-  font-size: 1.05rem;
-  opacity: 0.95;
-}
-.home-page .hero .btn-cta {
-  border-radius: 999px;
-  min-width: 160px;
-}
-.home-page .hero .hero__media {
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-}
-.home-page .card {
-  border: 1px solid var(--c-muted);
-  border-radius: 12px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
-}
-.home-page .accordion-button:focus {
-  box-shadow: none;
-}
-
-/* ---- Config (no imprimen CSS salvo reset/tipo) */
-/* ===== Contacto: suavizado de formulario ===== */
-/* Card/form general */
-form.card {
-  background: var(--c-surface);
-  border: 1px solid var(--c-muted);
-  border-radius: 16px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-}
-
-/* Etiquetas y textos auxiliares */
-.form-label {
-  font-weight: 600;
-  color: var(--c-text);
-}
-
-.form-text {
-  color: rgb(140.6571428571, 158.4, 162.3428571429);
-}
-
-/* Controles */
-.form-control,
-.form-select,
-textarea.form-control {
-  background: var(--c-surface);
-  color: var(--c-text);
-  border: 1px solid var(--c-muted);
-  border-radius: 12px;
-  padding: 0.65rem 0.9rem;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
-}
-
-/* Placeholder más tenue */
-.form-control::placeholder,
-textarea.form-control::placeholder {
-  color: rgb(154.7428571429, 170.3, 173.7571428571);
-}
-
-/* Hover sutil (sin distracción) */
-.form-control:hover,
-.form-select:hover,
-textarea.form-control:hover {
-  border-color: rgb(168.8285714286, 182.2, 185.1714285714);
-}
-
-/* Focus con tu acento (ring suave) */
-.form-control:focus,
-.form-select:focus,
-textarea.form-control:focus {
-  border-color: #F59E0B;
-  box-shadow: 0 0 0 0.2rem rgba(245, 158, 11, 0.18);
-  outline: 0;
-}
-
-/* Estados de validación (Bootstrap) */
-.was-validated .form-control:invalid,
-.form-control.is-invalid,
-.was-validated .form-select:invalid,
-.form-select.is-invalid,
-.was-validated textarea.form-control:invalid,
-textarea.form-control.is-invalid {
-  border-color: #ef4444; /* rojo accesible */
-  box-shadow: 0 0 0 0.18rem rgba(239, 68, 68, 0.16);
-}
-
-.was-validated .form-control:valid,
-.form-control.is-valid,
-.was-validated .form-select:valid,
-.form-select.is-valid,
-.was-validated textarea.form-control:valid,
-textarea.form-control.is-valid {
-  border-color: #336261;
-  box-shadow: 0 0 0 0.18rem rgba(51, 98, 97, 0.16);
-}
-
-/* Botón enviar (ya tenés .btn-primary tematizado) */
-.btn-cta {
-  border-radius: 999px;
-  padding-inline: 1.2rem;
-  min-width: 160px;
-}
-
-/* Espaciado interno uniforme */
-form.card .row.g-3 {
-  row-gap: 1rem;
-}
-
-/* Responsive */
-@media (min-width: 768px) {
-  form.card {
-    padding: 1.25rem 1.5rem;
-  }
-}
-/* Ajustar altura base de select y textarea para alinear con inputs */
-.form-select {
-  height: calc(2.75rem + 2px); /* mismo alto que .form-control */
-  padding-top: 0.65rem;
-  padding-bottom: 0.65rem;
-}
-
-textarea.form-control {
-  min-height: calc(2.75rem + 2px); /* mismo alto mínimo */
-  padding-top: 0.65rem;
-  padding-bottom: 0.65rem;
-  resize: vertical; /* permitir redimensionar solo verticalmente */
-}
-
-/* ---- Config (no imprimen CSS salvo reset/tipo) */
-/* ===== Página Newsletter (scoped) ===== */
-.newsletter-page {
-  /* Fondo y texto base (opcional: de última mantené el default) */
-  background-color: var(--c-bg);
-  color: var(--c-text);
-  /* Tarjetas principales */
-  /* Lista de temas */
-  /* Form de suscripción (re-usa tu suavizado de Contacto) */
-  /* Responsive micro-ajustes (si querés un poco de aire extra en lg+) */
-}
-.newsletter-page .card {
-  border: 1px solid var(--c-muted);
-  border-radius: 12px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
-}
-.newsletter-page .list-group-item {
-  border: 1px solid var(--c-muted);
-  border-radius: 10px;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-  /* Links dentro del item */
-  /* Badge a la derecha */
-  /* Hover del item: invertimos colores con tu acento */
-}
-.newsletter-page .list-group-item a {
-  color: var(--c-brand);
-  text-decoration: none;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
-}
-.newsletter-page .list-group-item a:hover {
-  text-decoration: underline;
-}
-.newsletter-page .list-group-item .badge {
-  background-color: var(--c-brand);
-  color: var(--c-text-invert);
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-.newsletter-page .list-group-item:hover {
-  background-color: rgb(226.3244094488, 145.6267716535, 9.2755905512);
-  color: var(--c-text-invert);
-  border-color: rgb(216.525984252, 139.3220472441, 8.874015748);
-}
-.newsletter-page .list-group-item:hover a {
-  color: var(--c-text-invert);
-  text-decoration: underline;
-}
-.newsletter-page .list-group-item:hover .badge {
-  background-color: var(--c-surface);
-  color: rgb(216.525984252, 139.3220472441, 8.874015748);
-}
-.newsletter-page form[novalidate] .form-label {
-  font-weight: 600;
-  color: var(--c-text);
-}
-.newsletter-page form[novalidate] .form-control {
-  background: var(--c-surface);
-  border: 1px solid var(--c-muted);
-  border-radius: 12px;
-  padding: 0.65rem 0.9rem;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
-}
-.newsletter-page form[novalidate] .form-control::placeholder {
-  color: rgb(154.7428571429, 170.3, 173.7571428571);
-}
-.newsletter-page form[novalidate] .form-control:hover {
-  border-color: rgb(168.8285714286, 182.2, 185.1714285714);
-}
-.newsletter-page form[novalidate] .form-control:focus {
-  border-color: #F59E0B;
-  box-shadow: 0 0 0 0.2rem rgba(245, 158, 11, 0.18);
-  outline: 0;
-}
-.newsletter-page form[novalidate] .btn-cta {
-  border-radius: 999px;
-  min-width: 160px;
-  /* coherente con tu tematización de .btn-primary,
-     acá solo aseguramos una leve transición */
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-}
-@media (min-width: 992px) {
-  .newsletter-page .card {
-    border-radius: 14px;
-  }
-}
-
-/* ---- Config (no imprimen CSS salvo reset/tipo) */
-/*-----------------------GALERY-----------------------*/
-.img__logo {
-  border: 3px solid #FFFFFF;
-  border-radius: 15px;
-  width: 200px;
-  margin: 10px;
-}
-
-.img__gral {
-  border: 3px solid #FFFFFF;
-  border-radius: 15px;
-  width: 100%;
-  max-width: 560px;
-}
-
-.img__gral-w {
-  border: 3px solid #FFFFFF;
-  border-radius: 15px;
-  width: 100%;
-  margin-top: 0;
-  margin-right: 0;
-}
-
-/* ---- Config (no imprimen CSS salvo reset/tipo) */
-/*-----------------------FOOTER-----------------------*/
-.pie {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin: 10px;
-  padding: 10px;
-}
-.pie nav {
-  align-items: center;
-}
-.pie nav ul {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.pie nav ul li a {
-  color: #292B2B;
-  text-transform: lowercase;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-}
-.pie p {
-  margin: 10px;
-  padding: 10px;
-}
-
-/* ---- Components */
-/* Sólido primary con tu acento */
-.btn-primary {
-  --bs-btn-bg: var(--c-accent);
-  --bs-btn-border-color: var(--c-accent);
-  --bs-btn-color: var(--c-text-invert);
-  --bs-btn-hover-bg: var(--c-brand);
-  --bs-btn-hover-border-color: var(--c-brand);
-  --bs-btn-hover-color: var(--c-text-invert);
-  --bs-btn-active-bg: var(--c-brand);
-  --bs-btn-active-border-color: var(--c-brand);
-}
-
-/* Outline primary con tu acento */
-.btn-outline-primary {
-  --bs-btn-color: var(--c-accent);
-  --bs-btn-border-color: var(--c-accent);
-  --bs-btn-hover-color: var(--c-text-invert);
-  --bs-btn-hover-bg: var(--c-accent);
-  --bs-btn-hover-border-color: var(--c-accent);
-  --bs-btn-active-color: var(--c-text-invert);
-  --bs-btn-active-bg: var(--c-accent);
-  --bs-btn-active-border-color: var(--c-accent);
-}
-
-/* Outline success mapeado al acento (por si aparece en otras vistas) */
-.btn-outline-success {
-  --bs-btn-color: var(--c-accent);
-  --bs-btn-border-color: var(--c-accent);
-  --bs-btn-hover-color: var(--c-text-invert);
-  --bs-btn-hover-bg: var(--c-accent);
-  --bs-btn-hover-border-color: var(--c-accent);
-  --bs-btn-active-color: var(--c-text-invert);
-  --bs-btn-active-bg: var(--c-accent);
-  --bs-btn-active-border-color: var(--c-accent);
-}
-
-/* Botón tipo “chip” para CTAs especiales */
-.btn-cta {
-  --bs-btn-bg: var(--c-accent);
-  --bs-btn-border-color: var(--c-accent);
-  --bs-btn-color: var(--c-text-invert);
-  --bs-btn-hover-bg: var(--c-brand);
-  --bs-btn-hover-border-color: var(--c-brand);
-  --bs-btn-hover-color: var(--c-text-invert);
-  border-radius: 999px;
-  padding-inline: 1.1rem;
-}
-
-/* === Botones: overrides definitivos === */
-/* Sólido primary con tu acento (global y dentro del navbar) */
-.btn-primary,
-.navbar .btn-primary {
-  --bs-btn-bg: var(--c-accent);
-  --bs-btn-border-color: var(--c-accent);
-  --bs-btn-color: var(--c-text-invert);
-  --bs-btn-hover-bg: var(--c-brand);
-  --bs-btn-hover-border-color: var(--c-brand);
-  --bs-btn-hover-color: var(--c-text-invert);
-  --bs-btn-active-bg: var(--c-brand);
-  --bs-btn-active-border-color: var(--c-brand);
-  --bs-btn-active-color: var(--c-text-invert);
-}
-
-/* Outline primary y success (por si en alguna vista quedó success) */
-.btn-outline-primary,
-.navbar .btn-outline-primary,
-.btn-outline-success,
-.navbar .btn-outline-success {
-  --bs-btn-color: var(--c-accent);
-  --bs-btn-border-color: var(--c-accent);
-  --bs-btn-hover-bg: var(--c-accent);
-  --bs-btn-hover-border-color: var(--c-accent);
-  --bs-btn-hover-color: var(--c-text-invert);
-  --bs-btn-active-bg: var(--c-accent);
-  --bs-btn-active-border-color: var(--c-accent);
-  --bs-btn-active-color: var(--c-text-invert);
-}
-
-/* Fallback explícito por si algún tema de cascade molesta */
-.btn-primary:hover,
-.navbar .btn-primary:hover {
-  background-color: var(--c-brand) !important;
-  border-color: var(--c-brand) !important;
-  color: var(--c-text-invert) !important;
-}
-
-.btn-outline-primary:hover,
-.navbar .btn-outline-primary:hover,
-.btn-outline-success:hover,
-.navbar .btn-outline-success:hover {
-  background-color: var(--c-accent) !important;
-  border-color: var(--c-accent) !important;
-  color: var(--c-text-invert) !important;
-}
-
-/* Accesibilidad: focus visible */
-.btn:focus-visible {
-  outline: 2px solid var(--c-accent);
-  outline-offset: 2px;
-}
-
-/*# sourceMappingURL=main.css.map */
